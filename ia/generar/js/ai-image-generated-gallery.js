@@ -82,7 +82,7 @@ const getDateFromTimeStamp = (timestamp) => {
     const amPm = horas >= 12 ? 'p.m.' : 'a.m.';
     horas = horas > 12 ? horas - 12 : horas;
     
-    const fechaFormateada = `${dia} de ${nombreMes} de ${anio} ${horas}:${minutos} ${amPm}`;
+    const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
 
 };
