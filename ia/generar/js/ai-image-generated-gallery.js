@@ -5,7 +5,7 @@
     json.forEach((data) => {
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
-            <div class="card my-3">
+            <div class="card my-3 overflow-hidden">
                 <img src="${data.link}" class="card-image-top" alt="${data.title}">
                 <div class="card-body">
                     <h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>
