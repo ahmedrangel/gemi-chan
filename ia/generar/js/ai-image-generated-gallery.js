@@ -9,7 +9,7 @@
             <div class="card my-3 overflow-hidden">
                 ${!primercard && data.discordUser === "" ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="./svg/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${!primercard && data.discordUser === "" ? '' : '</div>'}
-                <img src="${data.link}" class="card-image-top" alt="${data.title}">
+                <img src="https://i.imgur.com/${data.id}.png" class="card-image-top" alt="${data.title}">
                 <div class="card-body">
                     <h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>
                     <small class="footer-color m-0">${getDateFromTimeStamp(data.datetime)}</small>
