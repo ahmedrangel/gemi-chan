@@ -6,7 +6,7 @@
     json.forEach((data) => {
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
-            <div class="card my-3 overflow-hidden">
+            <div class="card my-2 overflow-hidden">
                 ${!primercard && data.discordUser === "" ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="./svg/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${!primercard && data.discordUser === "" ? '' : '</div>'}
                 <img src="https://i.imgur.com/${data.id}.png" class="card-image-top" alt="${data.title}">
