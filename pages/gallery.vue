@@ -1,4 +1,7 @@
-
+<script setup>
+const { data: results } = await useFetch("/api/database.js");
+console.log(results);
+</script>
 <template>
   <main class="text-white">
     <div id="bg-img"></div>
@@ -17,9 +20,9 @@
 </main>
 </template>
 <script>
-(async() => {
-    const { data: results } = await useFetch("/api/database.js");
-    console.log(results);
+export default {
+  mounted() {
+    (async() => {
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
     json.forEach((data) => {
@@ -77,6 +80,8 @@
       })();
   })();
 
+  
+
 const CapitalizeFirstLetter = (string) => {
     const flc = string.replace(/^\w/, c => c.toUpperCase()); 
     return flc;
@@ -105,7 +110,7 @@ const getDateFromTimeStamp = (timestamp) => {
     
     const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
-
 };
-  
+  }
+}
 </script>
