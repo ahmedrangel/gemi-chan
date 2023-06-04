@@ -19,7 +19,7 @@ console.log(results);
     </div>
 </main>
 </template>
-<script>
+<script setup>
 (async() => {
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
