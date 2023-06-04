@@ -12,7 +12,7 @@ const db = JSON.parse(JSON.stringify(results.value.results));
                 <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}">
                 <div class="card-body text-white">
                     <h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>
-                    <small class="footer-card-color m-0">${getDateFromTimeStamp(data.datetime)}</small>
+                    <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
                 </div>
             </div>
         </div>
