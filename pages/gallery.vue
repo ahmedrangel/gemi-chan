@@ -3,15 +3,13 @@ const { data: results } = await useFetch("/api/database");
 const db = JSON.parse(JSON.stringify(results.value.results));
 (async() => {
   console.log(db);
-    const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
-    const json = await json_fetch.json();
-    json.forEach((data) => {
+    db.forEach((data) => {
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
             <div class="card my-2 overflow-hidden text-white">
                 ${data.discordUser === "" ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${data.discordUser === "" ? '' : '</div>'}
-                <img src="https://i.imgur.com/${data.id}.png" class="card-image-top" alt="${data.title}">
+                <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}">
                 <div class="card-body text-white">
                     <h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>
                     <small class="footer-card-color m-0">${getDateFromTimeStamp(data.datetime)}</small>
