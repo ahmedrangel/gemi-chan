@@ -16,8 +16,6 @@
 </main>
 </template>
 <script>
-import { onRequest } from '~/functions/helloworld';
-
 (async() => {
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
@@ -74,7 +72,6 @@ import { onRequest } from '~/functions/helloworld';
           }
         });
       })();
-      console.log(onRequest());
   })();
 
 const CapitalizeFirstLetter = (string) => {
