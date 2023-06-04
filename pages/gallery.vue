@@ -1,6 +1,5 @@
 <script setup>
 const { data: results } = await useFetch("/api/database");
-console.log(results);
 </script>
 <template>
   <main class="text-white">
@@ -23,6 +22,7 @@ console.log(results);
 export default {
   mounted() {
     (async() => {
+    console.log(results.value);
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
     json.forEach((data) => {
