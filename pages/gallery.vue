@@ -1,3 +1,7 @@
+<script setup>
+const { data: results } = await useFetch("/api/database.js");
+console.log(results);
+</script>
 <template>
   <main class="text-white">
     <div id="bg-img"></div>
