@@ -1,6 +1,35 @@
 <script setup>
 const { data: results } = await useFetch("/api/database");
 const db = JSON.parse(JSON.stringify(results.value.results));
+const CapitalizeFirstLetter = (string) => {
+    const flc = string.replace(/^\w/, c => c.toUpperCase()); 
+    return flc;
+};
+
+const getDateFromTimeStamp = (timestamp) => {
+    timestamp = timestamp * 1000;
+    const nombresMeses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+      ];
+    const fecha = new Date(timestamp);
+    let dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1;
+    const anio = fecha.getFullYear();
+    let horas = fecha.getHours();
+    const minutos = fecha.getMinutes();
+    
+    dia = dia.toString().padStart(2, '0');
+    horas = horas.toString().padStart(2, '0');
+
+    const nombreMes = nombresMeses[mes - 1];
+    
+    const amPm = horas >= 12 ? 'p.m.' : 'a.m.';
+    horas = horas > 12 ? horas - 12 : horas;
+    
+    const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
+    return fechaFormateada;
+};
 (async() => {
   console.log(db);
     db.forEach((data) => {
@@ -57,38 +86,6 @@ const db = JSON.parse(JSON.stringify(results.value.results));
         });
       })();
   })();
-
-  
-
-const CapitalizeFirstLetter = (string) => {
-    const flc = string.replace(/^\w/, c => c.toUpperCase()); 
-    return flc;
-};
-
-const getDateFromTimeStamp = (timestamp) => {
-    timestamp = timestamp * 1000;
-    const nombresMeses = [
-        "enero", "febrero", "marzo", "abril", "mayo", "junio",
-        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-      ];
-    const fecha = new Date(timestamp);
-    let dia = fecha.getDate();
-    const mes = fecha.getMonth() + 1;
-    const anio = fecha.getFullYear();
-    let horas = fecha.getHours();
-    const minutos = fecha.getMinutes();
-    
-    dia = dia.toString().padStart(2, '0');
-    horas = horas.toString().padStart(2, '0');
-
-    const nombreMes = nombresMeses[mes - 1];
-    
-    const amPm = horas >= 12 ? 'p.m.' : 'a.m.';
-    horas = horas > 12 ? horas - 12 : horas;
-    
-    const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
-    return fechaFormateada;
-};
 </script>
 <template>
   <main class="text-white">
