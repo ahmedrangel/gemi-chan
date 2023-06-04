@@ -17,9 +17,9 @@
 </main>
 </template>
 <script>
-const { data: results } = await useFetch("/api/database.js");
-console.log(results);
 (async() => {
+    const { data: results } = await useFetch("/api/database.js");
+    console.log(results);
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
     json.forEach((data) => {
