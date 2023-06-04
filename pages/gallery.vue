@@ -1,7 +1,7 @@
 <script setup>
 const { data: results } = await useFetch("/api/database");
 (async() => {
-  console.log(results.value[0]);
+  console.log(results.value.results);
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
     json.forEach((data) => {
