@@ -1,28 +1,7 @@
 <script setup>
 const { data: results } = await useFetch("/api/database");
-</script>
-<template>
-  <main class="text-white">
-    <div id="bg-img"></div>
-    <div class="py-5">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-12">
-                  <h2 class="mb-3">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
-                  <h5 class="fw-normal"><i>Obtenido a través de peticiones de usuarios al interactuar con el bot de Discord Gemi-chan</i></h5>
-              </div>
-              <div id="gallery" class="row"></div>
-              <button id="mostrar-mas" style="--clr:#ffb8fc; display: none;"><span>Mostrar más</span><i></i></button>
-          </div>
-      </div>
-    </div>
-</main>
-</template>
-<script>
-export default {
-  mounted() {
-    (async() => {
-    console.log(results.value);
+(async() => {
+  console.log(results.value);
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
     json.forEach((data) => {
@@ -111,6 +90,23 @@ const getDateFromTimeStamp = (timestamp) => {
     const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
 };
-  }
-}
+</script>
+<template>
+  <main class="text-white">
+    <div id="bg-img"></div>
+    <div class="py-5">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-12">
+                  <h2 class="mb-3">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
+                  <h5 class="fw-normal"><i>Obtenido a través de peticiones de usuarios al interactuar con el bot de Discord Gemi-chan</i></h5>
+              </div>
+              <div id="gallery" class="row"></div>
+              <button id="mostrar-mas" style="--clr:#ffb8fc; display: none;"><span>Mostrar más</span><i></i></button>
+          </div>
+      </div>
+    </div>
+</main>
+</template>
+<script>
 </script>
