@@ -1,4 +1,4 @@
-<script setup>
+<script>
 const { data: results } = await useFetch("/api/database.js");
 console.log(results);
 </script>
@@ -19,7 +19,7 @@ console.log(results);
     </div>
 </main>
 </template>
-<script setup>
+<script>
 (async() => {
     const json_fetch = await fetch(`https://dev.ahmedrangel.com/imgur/me/gallery`);
     const json = await json_fetch.json();
