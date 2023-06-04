@@ -21,15 +21,15 @@ const getDateFromTimeStamp = (timestamp) => {
     const anio = fecha.getFullYear();
     let horas = fecha.getHours();
     let minutos = fecha.getMinutes();
-    
-    dia = dia.toString().padStart(2, '0');
-    horas = horas.toString().padStart(2, '0');
-    minutos = minutos.toString().padStart(2, '0');
 
     const nombreMes = nombresMeses[mes - 1];
     
     const amPm = horas >= 12 ? 'p.m.' : 'a.m.';
     horas = horas > 12 ? horas - 12 : horas;
+
+    dia = dia.toString().padStart(2, '0');
+    horas = horas.toString().padStart(2, '0');
+    minutos = minutos.toString().padStart(2, '0');
     
     const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
