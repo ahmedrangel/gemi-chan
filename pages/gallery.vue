@@ -2,11 +2,14 @@
 const { data: results } = await useFetch("/api/database");
 const db = JSON.parse(JSON.stringify(results.value.results));
 const CapitalizeFirstLetter = (string) => {
+  if (string !== null) {
     const flc = string.replace(/^\w/, c => c.toUpperCase()); 
     return flc;
+  }
 };
 
 const getDateFromTimeStamp = (timestamp) => {
+  if (timestamp !== null) {
     timestamp = timestamp * 1000;
     const nombresMeses = [
         "enero", "febrero", "marzo", "abril", "mayo", "junio",
@@ -17,10 +20,11 @@ const getDateFromTimeStamp = (timestamp) => {
     const mes = fecha.getMonth() + 1;
     const anio = fecha.getFullYear();
     let horas = fecha.getHours();
-    const minutos = fecha.getMinutes();
+    let minutos = fecha.getMinutes();
     
     dia = dia.toString().padStart(2, '0');
     horas = horas.toString().padStart(2, '0');
+    minutos = minutos.toString().padStart(2, '0');
 
     const nombreMes = nombresMeses[mes - 1];
     
@@ -29,6 +33,7 @@ const getDateFromTimeStamp = (timestamp) => {
     
     const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
+  }
 };
 (async() => {
   console.log(db);
