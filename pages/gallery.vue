@@ -1,5 +1,5 @@
 <script setup>
-const { data: results } = await useFetch("/api/database.js");
+const { data: results } = await useFetch("/api/database");
 console.log(results);
 </script>
 <template>
