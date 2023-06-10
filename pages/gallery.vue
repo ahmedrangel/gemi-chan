@@ -38,6 +38,10 @@ const getDateFromTimeStamp = (timestamp) => {
 (async() => {
   console.log(db);
     db.forEach((data) => {
+      const esUrl = (cadena) => {
+        const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+        return regex.test(cadena);
+      };
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
             <div class="card my-2 overflow-hidden text-white border-0">
@@ -45,7 +49,8 @@ const getDateFromTimeStamp = (timestamp) => {
                 ${data.discordUser === null ? '' : '</div>'}
                 <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}">
                 <div class="card-body text-white">
-                    <h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>
+                  ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: ${data.title.replace(/^.*[\\\/]/, '')}</h5>`}
+                    
                     <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
                 </div>
             </div>
