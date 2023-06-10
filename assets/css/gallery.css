@@ -34,7 +34,7 @@ body {
     overflow: hidden;
   }
   
-  .card-title a:link {
+  .card-title a {
     background-color: transparent;
     color: #ffb8fc;
     text-decoration: none;
