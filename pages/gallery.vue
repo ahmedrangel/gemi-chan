@@ -49,7 +49,7 @@ const getDateFromTimeStamp = (timestamp) => {
                 ${data.discordUser === null ? '' : '</div>'}
                 <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}">
                 <div class="card-body text-white">
-                  ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title"><a href="${data.title}" target="_blank">Variación de: ${data.title.replace(/^.*[\\\/]/, '')}></a></h5>`}
+                  ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}></a></h5>`}
                     
                     <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
                 </div>
