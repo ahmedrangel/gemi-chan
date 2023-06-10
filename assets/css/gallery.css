@@ -35,9 +35,8 @@ body {
   }
   
   .card-title a:link {
-    font-size: 30px;
     background-color: transparent;
-    color: #000000;
+    color: var(--clr);
     text-decoration: none;
   }
   
