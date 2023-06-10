@@ -36,7 +36,7 @@ body {
   
   .card-title a:link {
     background-color: transparent;
-    color: var(--clr);
+    color: #ffb8fc;
     text-decoration: none;
   }
   
