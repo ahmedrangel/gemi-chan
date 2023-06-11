@@ -141,11 +141,14 @@ const getDateFromTimeStamp = (timestamp) => {
 </template>
 <script>
 export default {
-  script: [
-    {
-      src: "https://kit.fontawesome.com/cc91b92ca8.js",
-      body: true
+  head() {
+    return {
+      script: [
+        {
+          src: "https://kit.fontawesome.com/cc91b92ca8.js"
+        }
+      ]
     }
-  ]
+  }
 }
 </script>
