@@ -140,3 +140,10 @@ body {
       box-shadow: rgb(0 0 0 / 70%);
     }
   }
+
+  .page-button.active {
+    background: var(--clr);
+    box-shadow: 0;
+    color: #000;
+    font-weight: bold;
+  }
