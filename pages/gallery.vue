@@ -101,8 +101,8 @@ const getDateFromTimeStamp = (timestamp) => {
             }
             button.dataset.page = i;
             button.textContent = i;
- 
-            button.addEventListener('click', () => {
+
+            button.addEventListener('click', function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
               mostrarElementosPagina(currentPage);
@@ -120,7 +120,6 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        
         mostrarElementosPagina(currentPage);
         crearBotonesPagina();
       })();
