@@ -1,149 +1,155 @@
 body {
-    background-color: #000000!important;
+  background-color: #000000!important;
   }
   
-  .footer-card-color {
-    color: #b1b1b1;
-  }
-  
-  #bg-img {
-    background-image: url(/images/zihneebanner1920x1080.jpg);
-    z-index: -99;
-    position: fixed;
-    left: 0;
-    right: 0;
-    filter: blur(20px) saturate(2);
-    opacity: 40%;
-    -webkit-filter: blur(20px) saturate(3);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .card {
-    background-color: rgb(0 0 0 / 70%)!important;
-  }
-  
-  .card-body {
-    padding: 0.6rem 0.6rem!important;
-  }
-  
-  .card-img-top {
-    max-height: 200px;
-    overflow: hidden;
-  }
-  
-  .card-title a {
-    background-color: transparent;
-    color: #ffb8fc;
-    text-decoration: none;
-  }
-  
-  .card-title a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  button {
-    position: relative;
-    background: rgb(0 0 0 / 70%);
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: none;
-    font-size: 1rem;
-    padding: 1rem 3rem;
-    transition: 0.2s;
-  }
-  
-  button:hover {
-    background: var(--clr);
-    color: #000000;
-    box-shadow: 0 0 6px var(--clr);
-    animation: box 3s infinite;
-    font-weight: bold;
-  }
-  
-  button::before {
-    content: "";
-    position: absolute;
-    inset: 2px;
-  }
-  
-  button span {
-    position: relative;
-    z-index: 1;
-  }
-  button i {
-    position: absolute;
-    inset: 0;
-    display: block;
-  }
-  
-  button i::before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 2px;
-    left: 80%;
-    top: -2px;
-    border: 2px solid var(--clr);
-    background: rgb(0 0 0 / 70%);
-    transition: 0.2s;
-  }
-  
-  button:hover i::before {
-    width: 15px;
-    left: 20%;
-    animation: move 3s infinite;
-  }
-  
-  button i::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 2px;
-    left: 20%;
-    bottom: -2px;
-    border: 2px solid var(--clr);
-    background: rgb(0 0 0 / 70%);
-    transition: 0.2s;
-  }
-  
-  button:hover i::after {
-    width: 15px;
-    left: 80%;
-    animation: move 3s infinite;
-  }
-  
-  @keyframes move {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(5px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes box {
-    0% {
-      box-shadow: rgb(0 0 0 / 70%);
-    }
-    50% {
-      box-shadow: 0 0 12px var(--clr);
-    }
-    100% {
-      box-shadow: rgb(0 0 0 / 70%);
-    }
-  }
+.footer-card-color {
+  color: #b1b1b1;
+}
 
-  .page-button.active {
-    background: var(--clr);
-    box-shadow: 0;
-    color: #000;
-    font-weight: bold;
+#bg-img {
+  background-image: url(/images/zihneebanner1920x1080.jpg);
+  z-index: -99;
+  position: fixed;
+  left: 0;
+  right: 0;
+  filter: blur(20px) saturate(2);
+  opacity: 40%;
+  -webkit-filter: blur(20px) saturate(3);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  background-color: rgb(0 0 0 / 70%)!important;
+}
+
+.card-body {
+  padding: 0.6rem 0.6rem!important;
+}
+
+.card-img-top {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.card-title a {
+  background-color: transparent;
+  color: #ffb8fc;
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+button {
+  position: relative;
+  background: rgb(0 0 0 / 70%);
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: var(--clr);
+  color: #000000;
+  box-shadow: 0 0 6px var(--clr);
+  animation: box 3s infinite;
+  font-weight: bold;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+button i {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+button i::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 80%;
+  top: -2px;
+  border: 2px solid var(--clr);
+  background: rgb(0 0 0 / 70%);
+  transition: 0.2s;
+}
+
+button:hover i::before {
+  width: 15px;
+  left: 20%;
+  animation: move 3s infinite;
+}
+
+button i::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 20%;
+  bottom: -2px;
+  border: 2px solid var(--clr);
+  background: rgb(0 0 0 / 70%);
+  transition: 0.2s;
+}
+
+button:hover i::after {
+  width: 15px;
+  left: 80%;
+  animation: move 3s infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0);
   }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes box {
+  0% {
+    box-shadow: rgb(0 0 0 / 70%);
+  }
+  50% {
+    box-shadow: 0 0 12px var(--clr);
+  }
+  100% {
+    box-shadow: rgb(0 0 0 / 70%);
+  }
+}
+
+.page-button.active {
+  background: var(--clr);
+  box-shadow: 0;
+  color: #000;
+  font-weight: bold;
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1360px!important;
+  }
+}
