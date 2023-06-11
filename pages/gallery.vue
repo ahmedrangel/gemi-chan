@@ -114,7 +114,7 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h5 class="fw-normal"><i>Obtenido a través de peticiones de usuarios al interactuar con el bot de Discord Gemi-chan</i></h5>
               </div>
               <div id="gallery" class="row"></div>
-              <div id="paginas-container" style="--clr:#ffb8fc;"></div>
+              <div id="paginas-container" style="--clr:#ffb8fc;" class="text-center"></div>
           </div>
       </div>
     </div>
