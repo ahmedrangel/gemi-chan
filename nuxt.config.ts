@@ -5,7 +5,7 @@ export default ({
     ],
   app: {
     head: {
-      script: [{src: "https://kit.fontawesome.com/cc91b92ca8.js"}]
+      script: [{src: "https://cdnjs.cloudflare.com/ajax/libs/iconify/3.1.0/iconify.min.js"}]
     }
   }
   })
