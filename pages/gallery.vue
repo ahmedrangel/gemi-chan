@@ -85,7 +85,7 @@ const getDateFromTimeStamp = (timestamp) => {
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement('button');
-            button.classList.add('page-button');
+            button.classList.add('page-button col-1');
             button.dataset.page = i;
             button.textContent = i;
 
@@ -114,7 +114,7 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h5 class="fw-normal"><i>Obtenido a través de peticiones de usuarios al interactuar con el bot de Discord Gemi-chan</i></h5>
               </div>
               <div id="gallery" class="row"></div>
-              <div id="paginas-container" style="--clr:#ffb8fc;" class="text-center"></div>
+              <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
           </div>
       </div>
     </div>
