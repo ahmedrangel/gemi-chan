@@ -78,6 +78,12 @@ const getDateFromTimeStamp = (timestamp) => {
               divs[i].style.display = 'none';
             }
           }
+          scrollToGallery();
+        };
+
+        const scrollToGallery = () => {
+          const galleryElement = document.getElementById('gallery');
+          galleryElement.scrollIntoView({ behavior: 'smooth' });
         };
 
         const crearBotonesPagina = () => {
