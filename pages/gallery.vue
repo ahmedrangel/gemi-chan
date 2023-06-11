@@ -63,8 +63,6 @@ const getDateFromTimeStamp = (timestamp) => {
         document.querySelector("#gallery").insertAdjacentHTML('beforeend', html);
     });
     (() => {
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         const contenedor = document.getElementById('gallery');
         const conjunto = contenedor.getElementsByTagName('div');
         const divs = Array.from(conjunto).filter(elemento => elemento.id === 'images');
@@ -126,6 +124,8 @@ const getDateFromTimeStamp = (timestamp) => {
         crearBotonesPagina();
       })();
   })();
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 </script>
 <template>
   <main class="text-white">
