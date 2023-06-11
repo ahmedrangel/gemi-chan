@@ -49,7 +49,7 @@ const getDateFromTimeStamp = (timestamp) => {
                 ${data.discordUser === null ? '' : '</div>'}
                 <div>
                   ${esUrl(data.title) === false ? '<div class="type position-absolute" title="generación"><i class="fa fa-solid fa-gear"></i></div>' : '<div class="type position-absolute" title="variación"><i class="fa fa-solid fa-cube"></i></div>'}
-                  <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: -webkit-fill-available;">
+                  <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
                 </div>
                 <div class="card-body text-white">
                   ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
