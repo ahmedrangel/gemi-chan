@@ -85,7 +85,8 @@ const getDateFromTimeStamp = (timestamp) => {
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement('button');
-            button.classList.add('page-button col-1');
+            button.classList.add('page-button');
+            button.classList.add('col-1');
             button.dataset.page = i;
             button.textContent = i;
 
