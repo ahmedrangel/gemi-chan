@@ -159,12 +159,12 @@ button:hover i::after {
 }
 
 .type {
-  top: 45px;
+  top: 46px;
   right: 8px;
 }
 
 .fa {
   padding: 6px;
   background: rgb(0 0 0 / 70%);
-  border-radius: 50%;
+  border-radius: 14%;
 }
