@@ -45,7 +45,7 @@ const getDateFromTimeStamp = (timestamp) => {
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
             <div class="card my-2 overflow-hidden text-white border-0">
-                ${esUrl(data.title) === false ? '<div class="type position-absolute"><small>generación</small></div>' : '<div class="type position-absolute"><small>variación</small></div>'}
+                ${esUrl(data.title) === false ? '<div class="type position-absolute"><small>generación<i class="fa-solid fa-gear"></i></small></div>' : '<div class="type position-absolute"><small>variación<i class="fa-solid fa-clone"></i></small></div>'}
                 ${data.discordUser === null ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${data.discordUser === null ? '' : '</div>'}
                 <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}">
