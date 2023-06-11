@@ -60,40 +60,46 @@ const getDateFromTimeStamp = (timestamp) => {
     });
     (() => {
         const contenedor = document.getElementById('gallery');
-        const mostrarMasBtn = document.getElementById('mostrar-mas');
-        mostrarMasBtn.style.display = '';
         const conjunto = contenedor.getElementsByTagName('div');
         const divs = Array.from(conjunto).filter(elemento => elemento.id === 'images');
         console.log(divs);
-        const cantidadMostradosInicial = 16;
-        const cantidadMostradosPorClick = 16;
-        let cantidadMostrados = cantidadMostradosInicial;
-        console.log(divs);
+        const elementosPorPagina = 16;
+        const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
+        let currentPage = 1;
       
-        // Ocultar todos los elementos <div> después del índice cantidadMostradosInicial
-        for (let i = cantidadMostradosInicial; i < divs.length; i++) {
-          divs[i].style.display = 'none';
-        }
-      
-        // Agregar evento click al botón "Mostrar más"
-        mostrarMasBtn.addEventListener('click', function() {
-          const cantidadRestante = divs.length - cantidadMostrados;
-      
-          // Mostrar los siguientes elementos <div> ocultos
-          for (let i = cantidadMostrados; i < cantidadMostrados + cantidadMostradosPorClick; i++) {
-            if (i < divs.length) {
+        const mostrarElementosPagina = (pagina) => {
+          const inicio = (pagina - 1) * elementosPorPagina;
+          const fin = inicio + elementosPorPagina;
+
+          for (let i = 0; i < divs.length; i++) {
+            if (i >= inicio && i < fin) {
               divs[i].style.display = 'block';
+            } else {
+              divs[i].style.display = 'none';
             }
           }
-      
-          // Actualizar cantidadMostrados
-          cantidadMostrados += cantidadMostradosPorClick;
-      
-          // Ocultar el botón "Mostrar más" si no quedan más elementos por mostrar
-          if (cantidadRestante <= cantidadMostradosPorClick) {
-            mostrarMasBtn.style.display = 'none';
+        };
+
+        const crearBotonesPagina = () => {
+          const paginasContainer = document.getElementById('paginas-container');
+
+          for (let i = 1; i <= cantidadTotalPaginas; i++) {
+            const button = document.createElement('button');
+            button.classList.add('page-button');
+            button.dataset.page = i;
+            button.textContent = i;
+
+            button.addEventListener('click', function () {
+              const page = parseInt(this.dataset.page);
+              currentPage = page;
+              mostrarElementosPagina(currentPage);
+            });
+
+            paginasContainer.appendChild(button);
           }
-        });
+        };
+        mostrarElementosPagina(currentPage);
+        crearBotonesPagina();
       })();
   })();
 </script>
@@ -108,7 +114,7 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h5 class="fw-normal"><i>Obtenido a través de peticiones de usuarios al interactuar con el bot de Discord Gemi-chan</i></h5>
               </div>
               <div id="gallery" class="row"></div>
-              <button id="mostrar-mas" style="--clr:#ffb8fc; display: none;"><span>Mostrar más</span><i></i></button>
+              <div id="paginas-container"></div>
           </div>
       </div>
     </div>
