@@ -163,7 +163,7 @@ button:hover i::after {
   right: 8px;
   background: rgba(0,0,0,.7);
   border-radius: 14%;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   font-size: 24px;
 }
