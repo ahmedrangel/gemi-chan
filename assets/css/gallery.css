@@ -165,9 +165,4 @@ button:hover i::after {
   border-radius: 14%;
   width: 30px;
   height: 30px;
-  text-align: center;
-}
-
-.fa {
-  vertical-align: middle;
 }
