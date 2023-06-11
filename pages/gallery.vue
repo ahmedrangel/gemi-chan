@@ -2,9 +2,6 @@
 const { data: results } = await useFetch("/api/database");
 const db = JSON.parse(JSON.stringify(results.value.results));
 
-const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-
 const CapitalizeFirstLetter = (string) => {
   if (string !== null) {
     const flc = string.replace(/^\w/, c => c.toUpperCase()); 
@@ -66,6 +63,8 @@ const getDateFromTimeStamp = (timestamp) => {
         document.querySelector("#gallery").insertAdjacentHTML('beforeend', html);
     });
     (() => {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         const contenedor = document.getElementById('gallery');
         const conjunto = contenedor.getElementsByTagName('div');
         const divs = Array.from(conjunto).filter(elemento => elemento.id === 'images');
