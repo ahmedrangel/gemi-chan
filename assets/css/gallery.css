@@ -157,3 +157,8 @@ button:hover i::after {
       max-width: 1360px!important;
   }
 }
+
+.type {
+  top: 11%;
+  right: 5%;
+}
