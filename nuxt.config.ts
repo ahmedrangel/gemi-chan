@@ -4,13 +4,9 @@ export default ({
     "~/assets/css/gallery.css",
   ],
   
-  js: [
-    "bootstrap/dist/js/bootstrap.bundle.min.js"
-  ],
-
   app: {
     head: {
-      script: [{src: "https://cdnjs.cloudflare.com/ajax/libs/iconify/3.1.0/iconify.min.js"}]
+      script: [{src: "https://cdnjs.cloudflare.com/ajax/libs/iconify/3.1.0/iconify.min.js"}, "bootstrap/dist/js/bootstrap.bundle.min.js"]
     }
   }
 })
