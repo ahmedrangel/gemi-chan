@@ -3,5 +3,9 @@ export default ({
       "bootstrap/dist/css/bootstrap.min.css",
       "~/assets/css/gallery.css",
     ],
-  script: [{src: "https://kit.fontawesome.com/cc91b92ca8.js"}]
+  app: {
+    head: {
+      script: [{src: "https://kit.fontawesome.com/cc91b92ca8.js"}]
+    }
+  }
   })
