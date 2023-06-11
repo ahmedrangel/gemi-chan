@@ -162,3 +162,9 @@ button:hover i::after {
   top: 45px;
   right: 15px;
 }
+
+.fa {
+  padding: 6px;
+  background: rgb(0 0 0 / 70%);
+  border-radius: 40%;
+}
