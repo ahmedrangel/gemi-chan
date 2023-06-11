@@ -48,7 +48,7 @@ const getDateFromTimeStamp = (timestamp) => {
                 ${data.discordUser === null ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${data.discordUser === null ? '' : '</div>'}
                 <div>
-                  ${esUrl(data.title) === false ? '<div class="type position-absolute d-flex justify-content-center align-items-center" title="generación"><i class="fa-solid fa-terminal"></i></div>' : '<div class="type position-absolute d-flex justify-content-center align-items-center" title="variación"><i class="fa-solid fa-cube"></i></div>'}
+                  ${esUrl(data.title) === false ? '<div class="type position-absolute d-flex justify-content-center align-items-center" title="generación"><i class="fa-solid fa-code"></i></div>' : '<div class="type position-absolute d-flex justify-content-center align-items-center" title="variación"><i class="fa-solid fa-cube"></i></div>'}
                   <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
                 </div>
                 <div class="card-body text-white">
