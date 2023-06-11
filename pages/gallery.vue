@@ -90,7 +90,7 @@ const getDateFromTimeStamp = (timestamp) => {
             button.classList.add('page-button');
             button.classList.add('col-2');
             button.classList.add('col-sm-2');
-            button.classList.add('col-md-2');
+            button.classList.add('col-md-1');
             button.classList.add('col-lg-1');
             if (i == 1) {
               button.classList.add('active');
