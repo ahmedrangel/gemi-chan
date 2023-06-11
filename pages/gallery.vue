@@ -142,3 +142,15 @@ const getDateFromTimeStamp = (timestamp) => {
     </div>
 </main>
 </template>
+<script>
+  export default {
+    mounted() {
+      const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
+      const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => {
+        return new this.$nuxt.$Tooltip(tooltipTriggerEl, {
+          boundary: "window"
+        });
+      });
+    }
+  }
+</script>
