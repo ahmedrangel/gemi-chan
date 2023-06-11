@@ -78,10 +78,6 @@ const getDateFromTimeStamp = (timestamp) => {
               divs[i].style.display = 'none';
             }
           }
-          scrollToGallery();
-        };
-
-        const scrollToGallery = () => {
           const galleryElement = document.getElementById('gallery');
           galleryElement.scrollIntoView({ behavior: 'smooth' });
         };
@@ -100,6 +96,15 @@ const getDateFromTimeStamp = (timestamp) => {
               const page = parseInt(this.dataset.page);
               currentPage = page;
               mostrarElementosPagina(currentPage);
+              const buttons = document.querySelectorAll('.page-button');
+              buttons.forEach((button) => {
+                const page = parseInt(button.textContent);
+                if (page === currentPage) {
+                  button.classList.add('active');
+                } else {
+                  button.classList.remove('active');
+                }
+              });
             });
 
             paginasContainer.appendChild(button);
