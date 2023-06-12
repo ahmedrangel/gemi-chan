@@ -198,3 +198,7 @@ button:hover i::after {
   padding-left: calc(var(--bs-gutter-x)*.2);
   padding-right: calc(var(--bs-gutter-x)*.2);
 }
+
+.custom-tooltip {
+  --bs-tooltip-bg: rgba(0,0,0,.7);
+}
