@@ -25,12 +25,12 @@ const getDateFromTimeStamp = (timestamp) => {
 
     const nombreMes = nombresMeses[mes - 1];
     
-    const amPm = horas >= 12 ? 'p.m.' : 'a.m.';
+    const amPm = horas >= 12 ? "p.m." : "a.m.";
     horas = horas > 12 ? horas - 12 : horas;
 
-    dia = dia.toString().padStart(2, '0');
-    horas = horas.toString().padStart(2, '0');
-    minutos = minutos.toString().padStart(2, '0');
+    dia = dia.toString().padStart(2, "0");
+    horas = horas.toString().padStart(2, "0");
+    minutos = minutos.toString().padStart(2, "0");
     
     const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
@@ -45,27 +45,28 @@ const getDateFromTimeStamp = (timestamp) => {
       };
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
-            <div class="card my-2 overflow-hidden text-white border-0">
-                ${data.discordUser === null ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
-                ${data.discordUser === null ? '' : '</div>'}
-                <div>
-                  ${esUrl(data.title) === true ? '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span></div>' : '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span></div>'}
-                  <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
-                </div>
-                <div class="card-body text-white">
-                  ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
-                    
-                    <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
-                </div>
+          <div class="card my-2 overflow-hidden text-white border-0">
+            ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
+            ${data.discordUser === null ? '' : '</div>'}
+            <div>
+              <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
+                ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
+              </div>
+              <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
             </div>
+            <div class="card-body card-foot text-white">
+              ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
+              <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
+            </div>
+          </div>
         </div>
         `;
-        document.querySelector("#gallery").insertAdjacentHTML('beforeend', html);
+        document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
     });
     (() => {
-        const contenedor = document.getElementById('gallery');
-        const conjunto = contenedor.getElementsByTagName('div');
-        const divs = Array.from(conjunto).filter(elemento => elemento.id === 'images');
+        const contenedor = document.getElementById("gallery");
+        const conjunto = contenedor.getElementsByTagName("div");
+        const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         console.log(divs);
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
@@ -77,42 +78,42 @@ const getDateFromTimeStamp = (timestamp) => {
 
           for (let i = 0; i < divs.length; i++) {
             if (i >= inicio && i < fin) {
-              divs[i].style.display = 'block';
+              divs[i].style.display = "block";
             } else {
-              divs[i].style.display = 'none';
+              divs[i].style.display = "none";
             }
           }
-          const galleryElement = document.getElementById('gallery');
-          galleryElement.scrollIntoView({ behavior: 'smooth' });
+          const galleryElement = document.getElementById("gallery");
+          galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
         const crearBotonesPagina = () => {
-          const paginasContainer = document.getElementById('paginas-container');
+          const paginasContainer = document.getElementById("paginas-container");
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
-            const button = document.createElement('button');
-            button.classList.add('page-button');
-            button.classList.add('col-2');
-            button.classList.add('col-sm-2');
-            button.classList.add('col-md-1');
-            button.classList.add('col-lg-1');
+            const button = document.createElement("button");
+            button.classList.add("page-button");
+            button.classList.add("col-2");
+            button.classList.add("col-sm-2");
+            button.classList.add("col-md-1");
+            button.classList.add("col-lg-1");
             if (i == 1) {
-              button.classList.add('active');
+              button.classList.add("active");
             }
             button.dataset.page = i;
             button.textContent = i;
 
-            button.addEventListener('click', function () {
+            button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
               mostrarElementosPagina(currentPage);
-              const buttons = document.querySelectorAll('.page-button');
+              const buttons = document.querySelectorAll(".page-button");
               buttons.forEach((button) => {
                 const page = parseInt(button.textContent);
                 if (page === currentPage) {
-                  button.classList.add('active');
+                  button.classList.add("active");
                 } else {
-                  button.classList.remove('active');
+                  button.classList.remove("active");
                 }
               });
             });
