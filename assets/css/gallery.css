@@ -167,3 +167,8 @@ button:hover i::after {
   height: 26px;
   font-size: 24px;
 }
+
+#gallery>* {
+  padding-left: calc(var(--bs-gutter-x)*.2);
+  padding-right: calc(var(--bs-gutter-x)*.2);
+}
