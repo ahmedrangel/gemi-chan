@@ -49,6 +49,11 @@ body {
   background-color: transparent;
   text-decoration: none;
 }
+
+.card-desc small {
+  font-size: .82em;
+}
+
 button.page-button {
   position: relative;
   background: rgb(0 0 0 / 70%);
