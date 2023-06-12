@@ -49,7 +49,7 @@ const getDateFromTimeStamp = (timestamp) => {
                 ${data.discordUser === null ? '' : `<div class="card-body d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
                 ${data.discordUser === null ? '' : '</div>'}
                 <div>
-                  ${esUrl(data.title) === true ? '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span></div>' : '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span></div>'}
+                  ${esUrl(data.title) === true ? '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span></div>' : '<div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span></div>'}
                   <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
                 </div>
                 <div class="card-body text-white">
