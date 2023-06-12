@@ -161,6 +161,10 @@ button:hover i::after {
   padding: 0 5px;
 }
 
+.card-desc .card-title {
+  font-size: 1.1rem;
+}
+
 @media (min-width: 1200px) {
   .container {
       max-width: 1200px!important;
@@ -169,7 +173,7 @@ button:hover i::after {
 
 @media (max-width: 767px) {
   .card-desc .card-title {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .card-head .card-title {
