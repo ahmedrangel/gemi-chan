@@ -163,6 +163,10 @@ button:hover i::after {
     font-size: 1rem;
   }
 
+  .card-head .card-title {
+    font-size: 0.8em;
+  }
+
   .card-desc small {
     font-size: .70em;
   }
