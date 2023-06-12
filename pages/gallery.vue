@@ -25,7 +25,7 @@ const getDateFromTimeStamp = (timestamp) => {
 
     const nombreMes = nombresMeses[mes - 1];
     
-    const amPm = horas >= 12 ? "p.m." : "a.m.";
+    const amPm = horas >= 12 ? "PM" : "AM";
     horas = horas > 12 ? horas - 12 : horas;
 
     dia = dia.toString().padStart(2, "0");
