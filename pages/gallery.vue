@@ -32,7 +32,7 @@ const getDateFromTimeStamp = (timestamp) => {
     horas = horas.toString().padStart(2, "0");
     minutos = minutos.toString().padStart(2, "0");
     
-    const fechaFormateada = `${dia} de ${nombreMes} de ${anio}・${horas}:${minutos} ${amPm}`;
+    const fechaFormateada = `${dia}-${nombreMes}-${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
   }
 };
