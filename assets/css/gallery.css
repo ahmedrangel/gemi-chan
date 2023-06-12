@@ -201,4 +201,5 @@ button:hover i::after {
 
 .custom-tooltip {
   --bs-tooltip-bg: rgba(0,0,0,.85);
+  --bs-tooltip-border-radius: 14%;
 }
