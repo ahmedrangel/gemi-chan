@@ -149,7 +149,7 @@ button:hover i::after {
 }
 
 #gallery {
-  padding: 0;
+  padding: 0 5px;
 }
 
 @media (min-width: 1200px) {
