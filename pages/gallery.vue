@@ -54,7 +54,7 @@ const getDateFromTimeStamp = (timestamp) => {
               </div>
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
             </div>
-            <div class="card-body card-foot text-white">
+            <div class="card-body card-desc text-white">
               ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
               <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
             </div>
