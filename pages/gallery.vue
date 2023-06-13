@@ -45,7 +45,7 @@ const getDateFromTimeStamp = (timestamp) => {
       };
         const html = `
         <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
-          <div class="card my-2 overflow-hidden text-white border-0">
+          <div class="card my-1 overflow-hidden text-white border-0">
             ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
             ${data.discordUser === null ? '' : '</div>'}
             <div>
