@@ -129,7 +129,7 @@ const getDateFromTimeStamp = (timestamp) => {
 <template>
   <main class="text-white">
     <div id="bg-img"></div>
-    <div class="py-5">
+    <div class="py-4">
       <div class="container">
           <div class="row justify-content-center">
               <div class="col-12">
