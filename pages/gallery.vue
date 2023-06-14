@@ -44,7 +44,7 @@ const getDateFromTimeStamp = (timestamp) => {
         return regex.test(cadena);
       };
         const html = `
-        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}" style="display: none;>
+        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
           <div class="card my-1 overflow-hidden text-white border-0">
             ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
             ${data.discordUser === null ? '' : '</div>'}
@@ -122,7 +122,7 @@ const getDateFromTimeStamp = (timestamp) => {
         };
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
-        const elementos = document.getElementsByClassName("elemento");
+        const elementos = document.getElementsByClassName("elem");
         function genf() {
           for (let i = 0; i < elementos.length; i++) {
             elementos[i].style.display = elementos[i].classList.contains("generacion") ? "block" : "none";
