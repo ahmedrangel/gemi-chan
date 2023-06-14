@@ -213,11 +213,21 @@ button:hover i::after {
   cursor: pointer;
 }
 
+#comandos .badge:hover {
+  background-color: rgba(0,0,0,.4)!important;
+  cursor: pointer;
+}
+
 #comandos .iconify {
   font-size: 20px;
 }
 
 #comandos .badge.active {
   background-color: rgb(255 184 252);
+  color: #000000;
+}
+
+#comandos .badge.active:hover {
+  background-color: rgb(255 184 252 / 70%)!important;
   color: #000000;
 }
