@@ -109,13 +109,24 @@ const mostrarElementosFiltrados = () => {
               divs[i].style.display = "none";
             }
           }
+
+          const buttons = document.querySelectorAll(".page-button");
+          buttons.forEach((button) => {
+            const page = parseInt(button.textContent);
+            if (page === pagina) {
+              button.classList.add("active");
+            } else {
+              button.classList.remove("active");
+            }
+          });
+
           const galleryElement = document.getElementById("gallery");
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
         const crearBotonesPagina = () => {
           const paginasContainer = document.getElementById("paginas-container");
-
+          paginasContainer.innerHTML = "";
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
             button.classList.add("page-button");
