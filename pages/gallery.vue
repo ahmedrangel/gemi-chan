@@ -37,7 +37,8 @@ const getDateFromTimeStamp = (timestamp) => {
   }
 };
 
-let filterType = "";
+let filtroVariacion = false;
+let filtroGeneracion = false;
 
 (async() => {
   console.log(db);
@@ -67,40 +68,55 @@ let filterType = "";
         document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
     });
     (() => {
-        vBtn.addEventListener("click", function () {
-          filterType = "variacion";
-          filtrarElementos();
-        });
-
-        gBtn.addEventListener("click", function () {
-          filterType = "generacion";
-          filtrarElementos();
-        });
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const elementosPorPagina = 16;
-
         let currentPage = 1;
       
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
+          let elementosFiltrados = divs;
 
-          for (let i = 0; i < divs.length; i++) {
+          if (filtroVariacion) {
+            elementosFiltrados = elementosFiltrados.filter((elemento) =>
+              elemento.classList.contains("variacion")
+            );
+          } else if (filtroGeneracion) {
+            elementosFiltrados = elementosFiltrados.filter((elemento) =>
+              elemento.classList.contains("generacion")
+            );
+          }
+
+          for (let i = 0; i < elementosFiltrados.length; i++) {
             if (i >= inicio && i < fin) {
-              divs[i].style.display = "block";
+              elementosFiltrados[i].style.display = "block";
             } else {
-              divs[i].style.display = "none";
+              elementosFiltrados[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
-        const crearBotonesPagina = (cantidadTotalPaginas) => {
+        const crearBotonesPagina = () => {
           const paginasContainer = document.getElementById("paginas-container");
+          paginasContainer.innerHTML = "";
+          let elementosFiltrados = divs;
+          if (filtroVariacion) {
+            elementosFiltrados = elementosFiltrados.filter((elemento) =>
+              elemento.classList.contains("variacion")
+            );
+          } else if (filtroGeneracion) {
+            elementosFiltrados = elementosFiltrados.filter((elemento) =>
+              elemento.classList.contains("generacion")
+            );
+          }
 
+          const cantidadTotalPaginas = Math.ceil(
+            elementosFiltrados.length / elementosPorPagina
+          );
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
             button.classList.add("page-button");
@@ -108,7 +124,7 @@ let filterType = "";
             button.classList.add("col-sm-2");
             button.classList.add("col-md-1");
             button.classList.add("col-lg-1");
-            if (i == currentPage) {
+            if (i == 1) {
               button.classList.add("active");
             }
             button.dataset.page = i;
@@ -117,7 +133,7 @@ let filterType = "";
             button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
-              filtrarElementos();
+              mostrarElementosPagina(currentPage);
               const buttons = document.querySelectorAll(".page-button");
               buttons.forEach((button) => {
                 const page = parseInt(button.textContent);
@@ -132,30 +148,26 @@ let filterType = "";
             paginasContainer.appendChild(button);
           }
         };
-
-        const filtrarElementos = () => {
-          const tipoFiltro = filterType === "variacion" ? "variacion" : "generacion";
-          const elementosFiltrados = divs.filter(elemento => elemento.classList.contains(tipoFiltro));
-
-          for (let i = 0; i < divs.length; i++) {
-            if (elementosFiltrados.includes(divs[i])) {
-              divs[i].style.display = "block";
-            } else {
-              divs[i].style.display = "none";
-            }
-          }
-
-          const cantidadTotalPaginasFiltradas = Math.ceil(elementosFiltrados.length / elementosPorPagina);
-          if (currentPage > cantidadTotalPaginasFiltradas) {
+        document.querySelectorAll(".v-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            filtroVariacion = true;
+            filtroGeneracion = false;
             currentPage = 1;
-          }
+            mostrarElementosPagina(currentPage);
+            crearBotonesPagina();
+          });
+        });
 
-          const paginasContainer = document.getElementById("paginas-container");
-          paginasContainer.innerHTML = "";
-          crearBotonesPagina(cantidadTotalPaginasFiltradas);
-          mostrarElementosPagina(currentPage);
-        };
-      })();
+        document.querySelectorAll(".g-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            filtroVariacion = false;
+            filtroGeneracion = true;
+            currentPage = 1;
+            mostrarElementosPagina(currentPage);
+            crearBotonesPagina();
+          });
+        });
+        })();
   })();
 </script>
 <template>
