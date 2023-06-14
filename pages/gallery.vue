@@ -37,17 +37,7 @@ const getDateFromTimeStamp = (timestamp) => {
   }
 };
 
-let filteredType = "";
-const mostrarElementosFiltrados = () => {
-  const elementos = document.querySelectorAll("#images");
-  elementos.forEach(elemento => {
-    if (filteredType === "" || elemento.classList.contains(filteredType)) {
-      elemento.style.display = "block";
-    } else {
-      elemento.style.display = "none";
-    }
-  });
-};
+let filterType = "";
 
 (async() => {
   console.log(db);
@@ -76,26 +66,21 @@ const mostrarElementosFiltrados = () => {
         `;
         document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
     });
-
-    const filterElements = () => {
-      mostrarElementosFiltrados();
-      const buttons = document.querySelectorAll(".page-button");
-      buttons.forEach((button) => {
-        const page = parseInt(button.textContent);
-        if (page === 1) {
-          button.classList.add("active");
-        } else {
-          button.classList.remove("active");
-        }
-      });
-    };
-
     (() => {
+        vBtn.addEventListener("click", function () {
+          filterType = "variacion";
+          filtrarElementos();
+        });
+
+        gBtn.addEventListener("click", function () {
+          filterType = "generacion";
+          filtrarElementos();
+        });
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const elementosPorPagina = 16;
-        const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
+
         let currentPage = 1;
       
         const mostrarElementosPagina = (pagina) => {
@@ -109,24 +94,13 @@ const mostrarElementosFiltrados = () => {
               divs[i].style.display = "none";
             }
           }
-
-          const buttons = document.querySelectorAll(".page-button");
-          buttons.forEach((button) => {
-            const page = parseInt(button.textContent);
-            if (page === pagina) {
-              button.classList.add("active");
-            } else {
-              button.classList.remove("active");
-            }
-          });
-
           const galleryElement = document.getElementById("gallery");
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
-        const crearBotonesPagina = () => {
+        const crearBotonesPagina = (cantidadTotalPaginas) => {
           const paginasContainer = document.getElementById("paginas-container");
-          paginasContainer.innerHTML = "";
+
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
             button.classList.add("page-button");
@@ -134,7 +108,7 @@ const mostrarElementosFiltrados = () => {
             button.classList.add("col-sm-2");
             button.classList.add("col-md-1");
             button.classList.add("col-lg-1");
-            if (i == 1) {
+            if (i == currentPage) {
               button.classList.add("active");
             }
             button.dataset.page = i;
@@ -143,27 +117,44 @@ const mostrarElementosFiltrados = () => {
             button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
-              mostrarElementosPagina(currentPage);
-              filterElements();
+              filtrarElementos();
+              const buttons = document.querySelectorAll(".page-button");
+              buttons.forEach((button) => {
+                const page = parseInt(button.textContent);
+                if (page === currentPage) {
+                  button.classList.add("active");
+                } else {
+                  button.classList.remove("active");
+                }
+              });
             });
 
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage);
-        crearBotonesPagina();
 
-        const vBtn = document.querySelector(".v-btn");
-        vBtn.addEventListener("click", () => {
-          filteredType = "variacion";
-          filterElements();
-        });
+        const filtrarElementos = () => {
+          const tipoFiltro = filterType === "variacion" ? "variacion" : "generacion";
+          const elementosFiltrados = divs.filter(elemento => elemento.classList.contains(tipoFiltro));
 
-        const gBtn = document.querySelector(".g-btn");
-        gBtn.addEventListener("click", () => {
-          filteredType = "generacion";
-          filterElements();
-        });
+          for (let i = 0; i < divs.length; i++) {
+            if (elementosFiltrados.includes(divs[i])) {
+              divs[i].style.display = "block";
+            } else {
+              divs[i].style.display = "none";
+            }
+          }
+
+          const cantidadTotalPaginasFiltradas = Math.ceil(elementosFiltrados.length / elementosPorPagina);
+          if (currentPage > cantidadTotalPaginasFiltradas) {
+            currentPage = 1;
+          }
+
+          const paginasContainer = document.getElementById("paginas-container");
+          paginasContainer.innerHTML = "";
+          crearBotonesPagina(cantidadTotalPaginasFiltradas);
+          mostrarElementosPagina(currentPage);
+        };
       })();
   })();
 </script>
