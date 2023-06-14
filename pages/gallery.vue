@@ -133,6 +133,31 @@ const getDateFromTimeStamp = (timestamp) => {
         filtrarElementosPorPagina();
       })();
   })();
+
+  document.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.classList.contains("g-btn")) {
+    const elementosVariacion = document.querySelectorAll('.variacion');
+    const elementosGeneracion = document.querySelectorAll('.generacion');
+    elementosVariacion.forEach((elemento) => {
+      elemento.style.display = "none";
+    });
+    elementosGeneracion.forEach((elemento) => {
+      elemento.style.display = "block";
+    });
+    filtrarElementosPorPagina();
+  } else if (target.classList.contains("v-btn")) {
+    const elementosVariacion = document.querySelectorAll('.variacion');
+    const elementosGeneracion = document.querySelectorAll('.generacion');
+    elementosGeneracion.forEach((elemento) => {
+      elemento.style.display = "none";
+    });
+    elementosVariacion.forEach((elemento) => {
+      elemento.style.display = "block";
+    });
+    filtrarElementosPorPagina();
+  }
+});
 </script>
 <template>
   <main class="text-white">
@@ -160,32 +185,6 @@ const getDateFromTimeStamp = (timestamp) => {
     </div>
 </main>
 </template>
-<script>
-document.addEventListener("click", (event) => {
-  const target = event.target;
-  if (target.classList.contains("g-btn")) {
-    const elementosVariacion = document.querySelectorAll('.variacion');
-    const elementosGeneracion = document.querySelectorAll('.generacion');
-    elementosVariacion.forEach((elemento) => {
-      elemento.style.display = "none";
-    });
-    elementosGeneracion.forEach((elemento) => {
-      elemento.style.display = "block";
-    });
-    filtrarElementosPorPagina();
-  } else if (target.classList.contains("v-btn")) {
-    const elementosVariacion = document.querySelectorAll('.variacion');
-    const elementosGeneracion = document.querySelectorAll('.generacion');
-    elementosGeneracion.forEach((elemento) => {
-      elemento.style.display = "none";
-    });
-    elementosVariacion.forEach((elemento) => {
-      elemento.style.display = "block";
-    });
-    filtrarElementosPorPagina();
-  }
-});
-</script>
 <script>
   export default {
     mounted() {
