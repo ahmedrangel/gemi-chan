@@ -124,11 +124,18 @@ const getDateFromTimeStamp = (timestamp) => {
         crearBotonesPagina(divs);
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
+        const elementos = document.getElementsByClassName("elemento");
         function genf() {
+          for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = elementos[i].classList.contains("generacion") ? "block" : "none";
+          }
           mostrarElementosPagina(currentPage, gen_f);
           crearBotonesPagina(gen_f);
         }
         function varf() {
+          for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = elementos[i].classList.contains("variacion") ? "block" : "none";
+          }
           mostrarElementosPagina(currentPage, var_f);
           crearBotonesPagina(var_f);
         }
