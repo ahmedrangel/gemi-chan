@@ -77,9 +77,9 @@ const getDateFromTimeStamp = (timestamp) => {
 
           for (let i = 0; i < elems.length; i++) {
             if (i >= inicio && i < fin) {
-              divs[i].style.display = "block";
+              elems[i].style.display = "block";
             } else {
-              divs[i].style.display = "none";
+              elems[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
