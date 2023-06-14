@@ -135,15 +135,15 @@ const getDateFromTimeStamp = (timestamp) => {
             crearBotonesPagina(filtro);
           } else if (btn1.classList.contains("active")) {
             btn1.classList.remove("active");
-            mostrarElementosPagina(1, divs);
-            crearBotonesPagina(divs);
+            mostrarElementosPagina(1, all_f);
+            crearBotonesPagina(all_f);
           } else {
             btn1.classList.add("active");
             mostrarElementosPagina(1, gen_f);
             crearBotonesPagina(gen_f);
           }
         }
-        
+
         genfilter.addEventListener("click", filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
         varfilter.addEventListener("click", filtrarElementos(var_f, varfilter, genfilter, "variacion"));
       })();
