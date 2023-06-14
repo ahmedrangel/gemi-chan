@@ -67,8 +67,8 @@ const getDateFromTimeStamp = (timestamp) => {
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
-        const gen_f = Array.from(conjunto).filter(elemento => elemento.className === "generacion");
-        const var_f = Array.from(conjunto).filter(elemento => elemento.className === "variacion");
+        const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+        const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
         const elementosPorPagina = 16;
         let currentPage = 1;
         const mostrarElementosPagina = (pagina, elems) => {
