@@ -82,7 +82,7 @@ const getDateFromTimeStamp = (timestamp) => {
               elems[i].style.display = "none";
             }
           }
-          const galleryElement = document.getElementById("gallery");
+          const galleryElement = document.getElementById("comandos");
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
@@ -137,8 +137,8 @@ const getDateFromTimeStamp = (timestamp) => {
           mostrarElementosPagina(currentPage, var_f);
           crearBotonesPagina(var_f);
         }
-        genfilter.addEventListener('click', genf);
-        varfilter.addEventListener('click', varf);
+        genfilter.addEventListener("click", genf);
+        varfilter.addEventListener("click", varf);
       })();
   })();
 </script>
