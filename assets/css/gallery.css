@@ -211,3 +211,7 @@ button:hover i::after {
 #comandos .badge {
   background-color: rgba(0,0,0,.7);
 }
+
+#comandos .iconify {
+  font-size: 20px;
+}
