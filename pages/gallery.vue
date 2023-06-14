@@ -70,6 +70,23 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
+
+        const filtrarElementos = (tipo) => {
+          for (let i = 0; i < images.length; i++) {
+            if (tipo === "generacion" && images[i].classList.contains("generacion")) {
+              images[i].style.display = "block";
+            } else if (tipo === "variacion" && images[i].classList.contains("variacion")) {
+              images[i].style.display = "block";
+            } else {
+              images[i].style.display = "none";
+            }
+          }
+          currentPage = 1;
+          mostrarElementosPagina(currentPage);
+        };
+
+        gBtn.addEventListener("click", () => filtrarElementos("generacion"));
+        vBtn.addEventListener("click", () => filtrarElementos("variacion"));
       
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
@@ -135,10 +152,10 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h2 id="titulo" class="mb-3 fw-bold">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
                   <h5 id="descripcion" class="fw-light">Obtenido a través de peticiones de usuarios al interactuar con comandos con el bot de Discord Gemi-chan.</h5>
                   <h5 id="comandos" class="fw-light">Comandos: 
-                    <span class="badge fw-normal">
+                    <span class="badge g-btn fw-normal">
                       <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
                     /generar
-                    </span> <span class="badge fw-normal">
+                    </span> <span class="badge v-btn fw-normal">
                       <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                     /variar
                     </span>
