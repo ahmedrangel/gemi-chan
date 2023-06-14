@@ -138,7 +138,7 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h5 id="comandos" class="fw-light">Comandos: 
                     <span class="badge fw-normal">
                       <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
-                      /generar
+                    /generar
                     </span>&nbsp;
                     <span class="badge fw-normal"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                       /variar
