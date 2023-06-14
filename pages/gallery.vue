@@ -86,6 +86,7 @@ const getDateFromTimeStamp = (timestamp) => {
 
         const crearBotonesPagina = (elems) => {
           const paginasContainer = document.getElementById("paginas-container");
+          paginasContainer.innerHTML = "";
           const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
@@ -114,12 +115,9 @@ const getDateFromTimeStamp = (timestamp) => {
                 }
               });
             });
-
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage, divs);
-        crearBotonesPagina(divs);
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
         const elementos = document.getElementsByClassName("elem");
