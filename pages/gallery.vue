@@ -139,8 +139,8 @@ const getDateFromTimeStamp = (timestamp) => {
             crearBotonesPagina(all_f);
           } else {
             btn1.classList.add("active");
-            mostrarElementosPagina(1, gen_f);
-            crearBotonesPagina(gen_f);
+            mostrarElementosPagina(1, filtro);
+            crearBotonesPagina(filtro);
           }
         }
 
