@@ -68,7 +68,7 @@ const getDateFromTimeStamp = (timestamp) => {
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const gen_f = Array.from(conjunto).filter(elemento => elemento.className === "generacion");
-        const var_f = Array.from(conjunto).filter(elemento => elemento.id === "variacion");
+        const var_f = Array.from(conjunto).filter(elemento => elemento.className === "variacion");
         const elementosPorPagina = 16;
         let currentPage = 1;
         const mostrarElementosPagina = (pagina, elems) => {
@@ -124,18 +124,13 @@ const getDateFromTimeStamp = (timestamp) => {
         crearBotonesPagina(divs);
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
-        const elementos = document.getElementsByClassName("elem");
         function genf() {
-          for (let i = 0; i < elementos.length; i++) {
-            mostrarElementosPagina(currentPage, gen_f);
-            crearBotonesPagina(gen_f);
-          }
+          mostrarElementosPagina(currentPage, gen_f);
+          crearBotonesPagina(gen_f);
         }
         function varf() {
-          for (let i = 0; i < elementos.length; i++) {
-            mostrarElementosPagina(currentPage, var_f);
-            crearBotonesPagina(var_f);
-          }
+          mostrarElementosPagina(currentPage, var_f);
+          crearBotonesPagina(var_f);
         }
         genfilter.addEventListener('click', genf);
         varfilter.addEventListener('click', varf);
