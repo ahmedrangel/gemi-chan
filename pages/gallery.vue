@@ -136,7 +136,7 @@ const getDateFromTimeStamp = (timestamp) => {
                   <h2 id="titulo" class="mb-3 fw-bold">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
                   <h5 id="descripcion" class="fw-light">Obtenido a través de peticiones de usuarios al interactuar con comandos con el bot de Discord Gemi-chan</h5>
                   <h5 id="comandos" class="fw-light">Comandos: 
-                    <span class="badge bg-secondary fw-normal">/generar</span> <span class="badge bg-secondary fw-normal">/variar</span> en el chat.
+                    <span class="badge bg-secondary fw-normal">/generar</span> <span class="badge bg-secondary fw-normal">/variar</span>
                   </h5>
               </div>
               <div id="gallery" class="row pb-3"></div>
