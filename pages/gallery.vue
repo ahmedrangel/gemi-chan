@@ -44,7 +44,7 @@ const getDateFromTimeStamp = (timestamp) => {
         return regex.test(cadena);
       };
         const html = `
-        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 ${esUrl(data.title) === true ? "variacion" : "generacion"}">
+        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
           <div class="card my-1 overflow-hidden text-white border-0">
             ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
             ${data.discordUser === null ? '' : '</div>'}
@@ -70,7 +70,22 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
-      
+        const genfilter = document.getElementsByClassName("genf");
+        const varfilter = document.getElementsByClassName("varf");
+        const elementos = document.getElementsByClassName("elem");
+        function genf() {
+          for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+          }
+        }
+
+        function varf() {
+          for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+          }
+        }
+        genfilter.addEventListener('click', genf);
+        varfilter.addEventListener('click', varf);
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
