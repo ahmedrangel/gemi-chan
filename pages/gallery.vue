@@ -127,13 +127,13 @@ const getDateFromTimeStamp = (timestamp) => {
       const elementos = document.getElementsByClassName("elem");
       function genf() {
         for (let i = 0; i < elementos.length; i++) {
-          elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+          elementos[i].style.display = elementos[i].classList.contains('generacion') ? 'block' : 'none';
         }
       }
 
       function varf() {
         for (let i = 0; i < elementos.length; i++) {
-          elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+          elementos[i].style.display = elementos[i].classList.contains('variacion') ? 'block' : 'none';
         }
       }
       genfilter.addEventListener('click', genf);
