@@ -84,8 +84,6 @@ const getDateFromTimeStamp = (timestamp) => {
           }
           const galleryElement = document.getElementById("gallery");
           galleryElement.scrollIntoView({ behavior: "smooth" });
-
-          
         };
 
         const crearBotonesPagina = () => {
