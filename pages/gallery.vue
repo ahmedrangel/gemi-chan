@@ -66,7 +66,7 @@ const getDateFromTimeStamp = (timestamp) => {
     (() => {
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
-        const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
+        const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
         const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
         const elementosPorPagina = 16;
@@ -123,22 +123,29 @@ const getDateFromTimeStamp = (timestamp) => {
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
         const elementos = document.getElementsByClassName("elem");
-        function genf() {
+
+        const filtrarElementos = (filtro, btn1, btn2, tipo) => {
           for (let i = 0; i < elementos.length; i++) {
-            elementos[i].style.display = elementos[i].classList.contains("generacion") ? "block" : "none";
+            elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
           }
-          mostrarElementosPagina(1, gen_f);
-          crearBotonesPagina(gen_f);
-        }
-        function varf() {
-          for (let i = 0; i < elementos.length; i++) {
-            elementos[i].style.display = elementos[i].classList.contains("variacion") ? "block" : "none";
+          if (btn2.classList.contains("active")) {
+            btn2.classList.remove("active");
+            btn1.classList.add("active");
+            mostrarElementosPagina(1, filtro);
+            crearBotonesPagina(filtro);
+          } else if (btn1.classList.contains("active")) {
+            btn1.classList.remove("active");
+            mostrarElementosPagina(1, divs);
+            crearBotonesPagina(divs);
+          } else {
+            btn1.classList.add("active");
+            mostrarElementosPagina(1, gen_f);
+            crearBotonesPagina(gen_f);
           }
-          mostrarElementosPagina(1, var_f);
-          crearBotonesPagina(var_f);
         }
-        genfilter.addEventListener("click", genf);
-        varfilter.addEventListener("click", varf);
+        
+        genfilter.addEventListener("click", filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
+        varfilter.addEventListener("click", filtrarElementos(var_f, varfilter, genfilter, "variacion"));
       })();
   })();
 </script>
