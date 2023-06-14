@@ -184,7 +184,7 @@ button:hover i::after {
     font-size: .70em;
   }
 
-  #descripcion, #comandos {
+  #descripcion, #comandos h5 {
     font-size: 1.1rem;
   }
 }
