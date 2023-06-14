@@ -148,6 +148,8 @@ let filtroGeneracion = false;
             paginasContainer.appendChild(button);
           }
         };
+        mostrarElementosPagina(currentPage);
+        crearBotonesPagina();
         document.querySelectorAll(".v-btn").forEach((btn) => {
           btn.addEventListener("click", function () {
             filtroVariacion = true;
