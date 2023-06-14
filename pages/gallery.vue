@@ -70,6 +70,9 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
+        const gBtn = document.querySelector(".g-btn");
+        const vBtn = document.querySelector(".v-btn");
+        const images = document.querySelectorAll(".variacion, .generacion");
 
         const filtrarElementos = (tipo) => {
           for (let i = 0; i < images.length; i++) {
