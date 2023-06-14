@@ -68,13 +68,12 @@ const getDateFromTimeStamp = (timestamp) => {
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const elementosPorPagina = 16;
-        const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
-        const mostrarElementosPagina = (pagina) => {
+        const mostrarElementosPagina = (pagina, elems) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
 
-          for (let i = 0; i < divs.length; i++) {
+          for (let i = 0; i < elems.length; i++) {
             if (i >= inicio && i < fin) {
               divs[i].style.display = "block";
             } else {
@@ -85,9 +84,9 @@ const getDateFromTimeStamp = (timestamp) => {
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
-        const crearBotonesPagina = () => {
+        const crearBotonesPagina = (elems) => {
           const paginasContainer = document.getElementById("paginas-container");
-
+          const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
             button.classList.add("page-button");
@@ -104,7 +103,7 @@ const getDateFromTimeStamp = (timestamp) => {
             button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
-              mostrarElementosPagina(currentPage);
+              mostrarElementosPagina(currentPage, elems);
               const buttons = document.querySelectorAll(".page-button");
               buttons.forEach((button) => {
                 const page = parseInt(button.textContent);
@@ -119,25 +118,28 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage);
-        crearBotonesPagina();
+        mostrarElementosPagina(currentPage, divs);
+        crearBotonesPagina(divs);
+        const genfilter = document.querySelector(".genf");
+        const varfilter = document.querySelector(".varf");
+        const elementos = document.getElementsByClassName("elem");
+        function genf() {
+          for (let i = 0; i < elementos.length; i++) {
+            const divs = Array.from(conjunto).filter(elemento => elemento.className === "generacion");
+            mostrarElementosPagina(currentPage, divs);
+            crearBotonesPagina(divs);
+          }
+        }
+        function varf() {
+          for (let i = 0; i < elementos.length; i++) {
+            const divs = Array.from(conjunto).filter(elemento => elemento.className === "variacion");
+            mostrarElementosPagina(currentPage, divs);
+            crearBotonesPagina(divs);
+          }
+        }
+        genfilter.addEventListener('click', genf);
+        varfilter.addEventListener('click', varf);
       })();
-      const genfilter = document.querySelector(".genf");
-      const varfilter = document.querySelector(".varf");
-      const elementos = document.getElementsByClassName("elem");
-      function genf() {
-        for (let i = 0; i < elementos.length; i++) {
-          elementos[i].style.display = elementos[i].classList.contains('generacion') ? 'block' : 'none';
-        }
-      }
-
-      function varf() {
-        for (let i = 0; i < elementos.length; i++) {
-          elementos[i].style.display = elementos[i].classList.contains('variacion') ? 'block' : 'none';
-        }
-      }
-      genfilter.addEventListener('click', genf);
-      varfilter.addEventListener('click', varf);
   })();
 </script>
 <template>
