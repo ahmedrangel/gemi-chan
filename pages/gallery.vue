@@ -140,7 +140,7 @@ const getDateFromTimeStamp = (timestamp) => {
                       <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
                     /generar
                     </span>
-                    <span class="badge fw-normal">
+                    &nbsp;<span class="badge fw-normal">
                       <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                     /variar
                     </span>
