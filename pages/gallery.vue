@@ -74,42 +74,29 @@ const getDateFromTimeStamp = (timestamp) => {
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
-          let elementosFiltrados = [];
-          if (gBtn.classList.contains("active")) {
-            elementosFiltrados = divs.filter((elemento) =>
-              elemento.classList.contains("generacion")
-            );
-          } else if (vBtn.classList.contains("active")) {
-            elementosFiltrados = divs.filter((elemento) =>
-              elemento.classList.contains("variacion")
-            );
-          } else {
-            elementosFiltrados = divs;
-          }
 
-          for (let i = 0; i < elementosFiltrados.length; i++) {
+          for (let i = 0; i < divs.length; i++) {
             if (i >= inicio && i < fin) {
-              elementosFiltrados[i].style.display = "block";
+              divs[i].style.display = "block";
             } else {
-              elementosFiltrados[i].style.display = "none";
+              divs[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
           galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
-        const crearBotonesPagina = () => {
-          gBtn.addEventListener("click", function () {
-            gBtn.classList.add("active");
-            vBtn.classList.remove("active");
-            mostrarElementosPagina(currentPage);
-          });
+        const filtrarElementosPorPagina = () => {
+          const elementosFiltrados = document.querySelectorAll('.generacion, .variacion');
+          divs = Array.from(elementosFiltrados);
 
-          vBtn.addEventListener("click", function () {
-            gBtn.classList.remove("active");
-            vBtn.classList.add("active");
-            mostrarElementosPagina(currentPage);
-          });
+          cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
+          currentPage = 1;
+
+          mostrarElementosPagina(currentPage);
+          crearBotonesPagina();
+        };
+        const crearBotonesPagina = () => {
           const paginasContainer = document.getElementById("paginas-container");
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
@@ -143,8 +130,7 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage);
-        crearBotonesPagina();
+        filtrarElementosPorPagina();
       })();
   })();
 </script>
@@ -174,6 +160,32 @@ const getDateFromTimeStamp = (timestamp) => {
     </div>
 </main>
 </template>
+<script>
+document.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.classList.contains("g-btn")) {
+    const elementosVariacion = document.querySelectorAll('.variacion');
+    const elementosGeneracion = document.querySelectorAll('.generacion');
+    elementosVariacion.forEach((elemento) => {
+      elemento.style.display = "none";
+    });
+    elementosGeneracion.forEach((elemento) => {
+      elemento.style.display = "block";
+    });
+    filtrarElementosPorPagina();
+  } else if (target.classList.contains("v-btn")) {
+    const elementosVariacion = document.querySelectorAll('.variacion');
+    const elementosGeneracion = document.querySelectorAll('.generacion');
+    elementosGeneracion.forEach((elemento) => {
+      elemento.style.display = "none";
+    });
+    elementosVariacion.forEach((elemento) => {
+      elemento.style.display = "block";
+    });
+    filtrarElementosPorPagina();
+  }
+});
+</script>
 <script>
   export default {
     mounted() {
