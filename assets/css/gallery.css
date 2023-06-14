@@ -183,6 +183,10 @@ button:hover i::after {
   .card-desc small {
     font-size: .70em;
   }
+
+  #descripcion, #comandos {
+    font-size: 1.1rem;
+  }
 }
 .type {
   margin-top: 6px;
@@ -204,6 +208,3 @@ button:hover i::after {
   --bs-tooltip-border-radius: 4px;
 }
 
-#descripcion, #comandos {
-  font-size: 1.1rem;
-}
