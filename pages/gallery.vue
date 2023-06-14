@@ -36,14 +36,6 @@ const getDateFromTimeStamp = (timestamp) => {
     return fechaFormateada;
   }
 };
-
-const filtrarElementos = (clase) => {
-          const divsFiltrados = divs.filter(elemento => elemento.classList.contains(clase));
-          currentPage = 1;
-          mostrarElementosPagina(currentPage, divsFiltrados);
-          crearBotonesPagina();
-        };
-
 (async() => {
   console.log(db);
     db.forEach((data) => {
@@ -79,15 +71,15 @@ const filtrarElementos = (clase) => {
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
       
-        const mostrarElementosPagina = (pagina, elementos) => {
+        const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
 
-          for (let i = 0; i < elementos.length; i++) {
+          for (let i = 0; i < divs.length; i++) {
             if (i >= inicio && i < fin) {
-              elementos[i].style.display = "block";
+              divs[i].style.display = "block";
             } else {
-              elementos[i].style.display = "none";
+              divs[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
@@ -96,7 +88,6 @@ const filtrarElementos = (clase) => {
 
         const crearBotonesPagina = () => {
           const paginasContainer = document.getElementById("paginas-container");
-          paginasContainer.innerHTML = "";
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
@@ -114,7 +105,7 @@ const filtrarElementos = (clase) => {
             button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
-              mostrarElementosPagina(currentPage, divs);
+              mostrarElementosPagina(currentPage);
               const buttons = document.querySelectorAll(".page-button");
               buttons.forEach((button) => {
                 const page = parseInt(button.textContent);
@@ -129,8 +120,7 @@ const filtrarElementos = (clase) => {
             paginasContainer.appendChild(button);
           }
         };
-
-        mostrarElementosPagina(currentPage, divs);
+        mostrarElementosPagina(currentPage);
         crearBotonesPagina();
       })();
   })();
@@ -145,10 +135,10 @@ const filtrarElementos = (clase) => {
                   <h2 id="titulo" class="mb-3 fw-bold">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
                   <h5 id="descripcion" class="fw-light">Obtenido a través de peticiones de usuarios al interactuar con comandos con el bot de Discord Gemi-chan.</h5>
                   <h5 id="comandos" class="fw-light">Comandos: 
-                    <span class="badge g-btn fw-normal">
+                    <span class="badge genf fw-normal">
                       <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
                     /generar
-                    </span> <span class="badge v-btn fw-normal">
+                    </span> <span class="badge varf fw-normal">
                       <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                     /variar
                     </span>
@@ -170,19 +160,6 @@ const filtrarElementos = (clase) => {
           boundary: "window"
         });
       });
-      const vBtn = document.querySelector(".v-btn");
-        const gBtn = document.querySelector(".g-btn");
-        vBtn.addEventListener("click", function () {
-          vBtn.classList.add("active");
-          gBtn.classList.remove("active");
-          filtrarElementos("variacion");
-        });
-
-        gBtn.addEventListener("click", function () {
-          gBtn.classList.add("active");
-          vBtn.classList.remove("active");
-          filtrarElementos("generacion");
-        });
     }
   }
 </script>
