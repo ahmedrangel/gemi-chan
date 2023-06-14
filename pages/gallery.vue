@@ -120,8 +120,6 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage, divs);
-        crearBotonesPagina(divs);
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
         const elementos = document.getElementsByClassName("elemento");
