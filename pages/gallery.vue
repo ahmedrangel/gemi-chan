@@ -82,8 +82,6 @@ const getDateFromTimeStamp = (timestamp) => {
               elems[i].style.display = "none";
             }
           }
-          const galleryElement = document.getElementById("comandos");
-          galleryElement.scrollIntoView({ behavior: "smooth" });
         };
 
         const crearBotonesPagina = (elems) => {
@@ -116,6 +114,8 @@ const getDateFromTimeStamp = (timestamp) => {
                   button.classList.remove("active");
                 }
               });
+              const galleryElement = document.getElementById("titulo");
+              galleryElement.scrollIntoView({ behavior: "smooth" });
             });
             paginasContainer.appendChild(button);
           }
@@ -127,14 +127,14 @@ const getDateFromTimeStamp = (timestamp) => {
           for (let i = 0; i < elementos.length; i++) {
             elementos[i].style.display = elementos[i].classList.contains("generacion") ? "block" : "none";
           }
-          mostrarElementosPagina(currentPage, gen_f);
+          mostrarElementosPagina(1, gen_f);
           crearBotonesPagina(gen_f);
         }
         function varf() {
           for (let i = 0; i < elementos.length; i++) {
             elementos[i].style.display = elementos[i].classList.contains("variacion") ? "block" : "none";
           }
-          mostrarElementosPagina(currentPage, var_f);
+          mostrarElementosPagina(1, var_f);
           crearBotonesPagina(var_f);
         }
         genfilter.addEventListener("click", genf);
