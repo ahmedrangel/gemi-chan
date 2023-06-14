@@ -208,6 +208,6 @@ button:hover i::after {
   --bs-tooltip-border-radius: 4px;
 }
 
-#comandos.badge {
+#comandos .badge {
   background-color: rgba(0,0,0,.7);
 }
