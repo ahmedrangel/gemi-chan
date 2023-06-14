@@ -70,22 +70,6 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
-        const genfilter = document.getElementsByClassName("genf");
-        const varfilter = document.getElementsByClassName("varf");
-        const elementos = document.getElementsByClassName("elem");
-        function genf() {
-          for (let i = 0; i < elementos.length; i++) {
-            elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
-          }
-        }
-
-        function varf() {
-          for (let i = 0; i < elementos.length; i++) {
-            elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
-          }
-        }
-        genfilter.addEventListener('click', genf);
-        varfilter.addEventListener('click', varf);
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
@@ -169,6 +153,22 @@ const getDateFromTimeStamp = (timestamp) => {
 <script>
   export default {
     mounted() {
+      const genfilter = document.getElementsByClassName("genf");
+      const varfilter = document.getElementsByClassName("varf");
+      const elementos = document.getElementsByClassName("elem");
+      function genf() {
+        for (let i = 0; i < elementos.length; i++) {
+          elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+        }
+      }
+
+      function varf() {
+        for (let i = 0; i < elementos.length; i++) {
+          elementos[i].style.display = elementos[i].classList.contains('genf') ? 'block' : 'none';
+        }
+      }
+      genfilter.addEventListener('click', genf);
+      varfilter.addEventListener('click', varf);
       const tooltipTriggerList = document.querySelectorAll("[data-bs-toggle=\"tooltip\"]");
       const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => {
         return new this.$nuxt.$Tooltip(tooltipTriggerEl, {
