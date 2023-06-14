@@ -214,7 +214,7 @@ button:hover i::after {
 }
 
 #comandos .badge:hover {
-  background-color: rgba(0,0,0,.45)!important;
+  background-color: rgba(0,0,0,.50)!important;
 }
 
 #comandos .iconify {
@@ -227,5 +227,5 @@ button:hover i::after {
 }
 
 #comandos .badge.active:hover {
-  background-color: rgb(255 184 252 / 85%)!important;
+  background-color: rgb(255 184 252 / 90%)!important;
 }
