@@ -36,6 +36,14 @@ const getDateFromTimeStamp = (timestamp) => {
     return fechaFormateada;
   }
 };
+
+const filtrarElementos = (clase) => {
+          const divsFiltrados = divs.filter(elemento => elemento.classList.contains(clase));
+          currentPage = 1;
+          mostrarElementosPagina(currentPage, divsFiltrados);
+          crearBotonesPagina();
+        };
+
 (async() => {
   console.log(db);
     db.forEach((data) => {
@@ -70,13 +78,6 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
-
-        const filtrarElementos = (clase) => {
-          const divsFiltrados = divs.filter(elemento => elemento.classList.contains(clase));
-          currentPage = 1;
-          mostrarElementosPagina(currentPage, divsFiltrados);
-          crearBotonesPagina();
-        };
       
         const mostrarElementosPagina = (pagina, elementos) => {
           const inicio = (pagina - 1) * elementosPorPagina;
@@ -128,19 +129,6 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        const vBtn = document.querySelector(".v-btn");
-        const gBtn = document.querySelector(".g-btn");
-        vBtn.addEventListener("click", function () {
-          vBtn.classList.add("active");
-          gBtn.classList.remove("active");
-          filtrarElementos("variacion");
-        });
-
-        gBtn.addEventListener("click", function () {
-          gBtn.classList.add("active");
-          vBtn.classList.remove("active");
-          filtrarElementos("generacion");
-        });
 
         mostrarElementosPagina(currentPage, divs);
         crearBotonesPagina();
@@ -182,6 +170,19 @@ const getDateFromTimeStamp = (timestamp) => {
           boundary: "window"
         });
       });
+      const vBtn = document.querySelector(".v-btn");
+        const gBtn = document.querySelector(".g-btn");
+        vBtn.addEventListener("click", function () {
+          vBtn.classList.add("active");
+          gBtn.classList.remove("active");
+          filtrarElementos("variacion");
+        });
+
+        gBtn.addEventListener("click", function () {
+          gBtn.classList.add("active");
+          vBtn.classList.remove("active");
+          filtrarElementos("generacion");
+        });
     }
   }
 </script>
