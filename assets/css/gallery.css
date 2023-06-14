@@ -203,3 +203,7 @@ button:hover i::after {
   --bs-tooltip-bg: rgba(0,0,0,.85);
   --bs-tooltip-border-radius: 4px;
 }
+
+#descripcion, #comandos {
+  font-size: 1.1rem;
+}
