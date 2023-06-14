@@ -219,6 +219,5 @@ button:hover i::after {
 
 #comandos .badge.active {
   background-color: rgb(255 184 252);
-  cursor: pointer;
   color: #000000;
 }
