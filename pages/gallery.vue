@@ -63,6 +63,7 @@ const getDateFromTimeStamp = (timestamp) => {
         `;
         document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
     });
+    
     (() => {
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
