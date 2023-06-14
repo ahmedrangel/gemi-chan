@@ -70,36 +70,28 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementosPorPagina = 16;
         const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
-        const gBtn = document.querySelector(".g-btn");
-        const vBtn = document.querySelector(".v-btn");
-        const images = document.querySelectorAll(".variacion, .generacion");
-
-        const filtrarElementos = (tipo) => {
-          for (let i = 0; i < images.length; i++) {
-            if (tipo === "generacion" && images[i].classList.contains("generacion")) {
-              images[i].style.display = "block";
-            } else if (tipo === "variacion" && images[i].classList.contains("variacion")) {
-              images[i].style.display = "block";
-            } else {
-              images[i].style.display = "none";
-            }
-          }
-          currentPage = 1;
-          mostrarElementosPagina(currentPage);
-        };
-
-        gBtn.addEventListener("click", () => filtrarElementos("generacion"));
-        vBtn.addEventListener("click", () => filtrarElementos("variacion"));
       
         const mostrarElementosPagina = (pagina) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
+          let elementosFiltrados = [];
+          if (gBtn.classList.contains("active")) {
+            elementosFiltrados = divs.filter((elemento) =>
+              elemento.classList.contains("generacion")
+            );
+          } else if (vBtn.classList.contains("active")) {
+            elementosFiltrados = divs.filter((elemento) =>
+              elemento.classList.contains("variacion")
+            );
+          } else {
+            elementosFiltrados = divs;
+          }
 
-          for (let i = 0; i < divs.length; i++) {
+          for (let i = 0; i < elementosFiltrados.length; i++) {
             if (i >= inicio && i < fin) {
-              divs[i].style.display = "block";
+              elementosFiltrados[i].style.display = "block";
             } else {
-              divs[i].style.display = "none";
+              elementosFiltrados[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
@@ -107,6 +99,17 @@ const getDateFromTimeStamp = (timestamp) => {
         };
 
         const crearBotonesPagina = () => {
+          gBtn.addEventListener("click", function () {
+            gBtn.classList.add("active");
+            vBtn.classList.remove("active");
+            mostrarElementosPagina(currentPage);
+          });
+
+          vBtn.addEventListener("click", function () {
+            gBtn.classList.remove("active");
+            vBtn.classList.add("active");
+            mostrarElementosPagina(currentPage);
+          });
           const paginasContainer = document.getElementById("paginas-container");
 
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
