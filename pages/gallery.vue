@@ -120,7 +120,7 @@ const getDateFromTimeStamp = (timestamp) => {
             paginasContainer.appendChild(button);
           }
         };
-        
+
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
         const elementos = document.getElementsByClassName("elem");
@@ -143,7 +143,7 @@ const getDateFromTimeStamp = (timestamp) => {
             mostrarElementosPagina(1, filtro);
             crearBotonesPagina(filtro);
           }
-        }
+        };
 
         genfilter.addEventListener("click", filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
         varfilter.addEventListener("click", filtrarElementos(var_f, varfilter, genfilter, "variacion"));
