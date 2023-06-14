@@ -36,10 +36,6 @@ const getDateFromTimeStamp = (timestamp) => {
     return fechaFormateada;
   }
 };
-
-let filtroVariacion = false;
-let filtroGeneracion = false;
-
 (async() => {
   console.log(db);
     db.forEach((data) => {
@@ -72,28 +68,25 @@ let filtroGeneracion = false;
         const conjunto = contenedor.getElementsByTagName("div");
         const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const elementosPorPagina = 16;
+        const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
+
+        const filtrarElementos = (clase) => {
+          const divsFiltrados = divs.filter(elemento => elemento.classList.contains(clase));
+          currentPage = 1;
+          mostrarElementosPagina(currentPage, divsFiltrados);
+          crearBotonesPagina();
+        };
       
-        const mostrarElementosPagina = (pagina) => {
+        const mostrarElementosPagina = (pagina, elementos) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
-          let elementosFiltrados = divs;
 
-          if (filtroVariacion) {
-            elementosFiltrados = elementosFiltrados.filter((elemento) =>
-              elemento.classList.contains("variacion")
-            );
-          } else if (filtroGeneracion) {
-            elementosFiltrados = elementosFiltrados.filter((elemento) =>
-              elemento.classList.contains("generacion")
-            );
-          }
-
-          for (let i = 0; i < elementosFiltrados.length; i++) {
+          for (let i = 0; i < elementos.length; i++) {
             if (i >= inicio && i < fin) {
-              elementosFiltrados[i].style.display = "block";
+              elementos[i].style.display = "block";
             } else {
-              elementosFiltrados[i].style.display = "none";
+              elementos[i].style.display = "none";
             }
           }
           const galleryElement = document.getElementById("gallery");
@@ -103,20 +96,7 @@ let filtroGeneracion = false;
         const crearBotonesPagina = () => {
           const paginasContainer = document.getElementById("paginas-container");
           paginasContainer.innerHTML = "";
-          let elementosFiltrados = divs;
-          if (filtroVariacion) {
-            elementosFiltrados = elementosFiltrados.filter((elemento) =>
-              elemento.classList.contains("variacion")
-            );
-          } else if (filtroGeneracion) {
-            elementosFiltrados = elementosFiltrados.filter((elemento) =>
-              elemento.classList.contains("generacion")
-            );
-          }
 
-          const cantidadTotalPaginas = Math.ceil(
-            elementosFiltrados.length / elementosPorPagina
-          );
           for (let i = 1; i <= cantidadTotalPaginas; i++) {
             const button = document.createElement("button");
             button.classList.add("page-button");
@@ -133,7 +113,7 @@ let filtroGeneracion = false;
             button.addEventListener("click", function () {
               const page = parseInt(this.dataset.page);
               currentPage = page;
-              mostrarElementosPagina(currentPage);
+              mostrarElementosPagina(currentPage, divs);
               const buttons = document.querySelectorAll(".page-button");
               buttons.forEach((button) => {
                 const page = parseInt(button.textContent);
@@ -148,28 +128,23 @@ let filtroGeneracion = false;
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage);
-        crearBotonesPagina();
-        document.querySelectorAll(".v-btn").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            filtroVariacion = true;
-            filtroGeneracion = false;
-            currentPage = 1;
-            mostrarElementosPagina(currentPage);
-            crearBotonesPagina();
-          });
+        const vBtn = document.querySelector(".v-btn");
+        const gBtn = document.querySelector(".g-btn");
+        vBtn.addEventListener("click", function () {
+          vBtn.classList.add("active");
+          gBtn.classList.remove("active");
+          filtrarElementos("variacion");
         });
 
-        document.querySelectorAll(".g-btn").forEach((btn) => {
-          btn.addEventListener("click", function () {
-            filtroVariacion = false;
-            filtroGeneracion = true;
-            currentPage = 1;
-            mostrarElementosPagina(currentPage);
-            crearBotonesPagina();
-          });
+        gBtn.addEventListener("click", function () {
+          gBtn.classList.add("active");
+          vBtn.classList.remove("active");
+          filtrarElementos("generacion");
         });
-        })();
+
+        mostrarElementosPagina(currentPage, divs);
+        crearBotonesPagina();
+      })();
   })();
 </script>
 <template>
