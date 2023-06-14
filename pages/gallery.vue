@@ -44,12 +44,12 @@ const getDateFromTimeStamp = (timestamp) => {
         return regex.test(cadena);
       };
         const html = `
-        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3">
+        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 ${esUrl(data.title) === true ? "variacion" : "generacion"}">
           <div class="card my-1 overflow-hidden text-white border-0">
             ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
             ${data.discordUser === null ? '' : '</div>'}
             <div>
-              <div class="type position-absolute d-flex justify-content-center align-items-center ${esUrl(data.title) === true ? "variacion" : "generacion"}" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
+              <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
                 ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
               </div>
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
