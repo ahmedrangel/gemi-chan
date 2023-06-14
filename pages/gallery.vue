@@ -122,8 +122,8 @@ const getDateFromTimeStamp = (timestamp) => {
         mostrarElementosPagina(currentPage);
         crearBotonesPagina();
       })();
-      const genfilter = document.getElementsByClassName("genf");
-      const varfilter = document.getElementsByClassName("varf");
+      const genfilter = document.querySelector(".genf");
+      const varfilter = document.querySelector(".varf");
       const elementos = document.getElementsByClassName("elem");
       function genf() {
         for (let i = 0; i < elementos.length; i++) {
