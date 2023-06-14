@@ -160,15 +160,17 @@ const getDateFromTimeStamp = (timestamp) => {
               <div class="col-12">
                   <h2 id="titulo" class="mb-3 fw-bold">Galería de imágenes generadas por IA DALL-E (OpenAI)</h2>
                   <h5 id="descripcion" class="fw-light">Obtenido a través de peticiones de usuarios al interactuar con comandos con el bot de Discord Gemi-chan.</h5>
-                  <h5 id="comandos" class="fw-light">Comandos: 
-                    <span class="badge genf fw-normal">
-                      <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
-                    /generar
-                    </span> <span class="badge varf fw-normal">
-                      <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
-                    /variar
-                    </span>
-                  </h5>
+                  <div id="comandos">
+                    <h5>
+                      <span class="badge genf fw-normal">
+                        <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
+                      /generar
+                      </span> <span class="badge varf fw-normal">
+                        <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
+                      /variar
+                      </span>
+                    </h5>
+                  </div>
               </div>
               <div id="gallery" class="row pb-3"></div>
               <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
