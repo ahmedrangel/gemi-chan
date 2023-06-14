@@ -125,16 +125,16 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementos = document.getElementsByClassName("elem");
         function genf() {
           for (let i = 0; i < elementos.length; i++) {
-            const divs = Array.from(conjunto).filter(elemento => elemento.className === "generacion");
-            mostrarElementosPagina(currentPage, divs);
-            crearBotonesPagina(divs);
+            const elem = Array.from(conjunto).filter(elemento => elemento.className === "generacion");
+            mostrarElementosPagina(currentPage, elem);
+            crearBotonesPagina(elem);
           }
         }
         function varf() {
           for (let i = 0; i < elementos.length; i++) {
-            const divs = Array.from(conjunto).filter(elemento => elemento.className === "variacion");
-            mostrarElementosPagina(currentPage, divs);
-            crearBotonesPagina(divs);
+            const elem = Array.from(conjunto).filter(elemento => elemento.className === "variacion");
+            mostrarElementosPagina(currentPage, elem);
+            crearBotonesPagina(elem);
           }
         }
         genfilter.addEventListener('click', genf);
