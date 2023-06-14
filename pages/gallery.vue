@@ -66,9 +66,9 @@ const getDateFromTimeStamp = (timestamp) => {
     (() => {
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
-        const divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
+        let divs = Array.from(conjunto).filter(elemento => elemento.id === "images");
         const elementosPorPagina = 16;
-        const cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
+        let cantidadTotalPaginas = Math.ceil(divs.length / elementosPorPagina);
         let currentPage = 1;
       
         const mostrarElementosPagina = (pagina) => {
