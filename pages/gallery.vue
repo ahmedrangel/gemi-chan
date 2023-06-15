@@ -123,6 +123,7 @@ const esUrl = (cadena) => {
             elems[i].style.display = "none";
           }
         }
+        actualizarBotonesPagina(elems, pagina);
       };
 
       const PageButtonsClickEvents = (elems, datasetpage) => {
@@ -172,6 +173,64 @@ const esUrl = (cadena) => {
           clonedButton.addEventListener("click", () => PageButtonsClickEvents(elems, clonedButton.dataset.page));
         }
       };
+
+      const actualizarBotonesPagina = (elems, currentPage) => {
+        const paginasContainer = document.getElementById("paginas-container");
+        paginasContainer.innerHTML = "";
+
+        const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
+        const maxButtonsToShow = 5;
+
+        let startPage, endPage;
+        if (cantidadTotalPaginas <= maxButtonsToShow) {
+          startPage = 1;
+          endPage = cantidadTotalPaginas;
+        } else {
+          const middleButtons = maxButtonsToShow - 2; 
+          const sideButtons = Math.floor(middleButtons / 2);
+
+          if (currentPage <= sideButtons + 1) {
+            // Si la página actual está cerca del principio, se muestran los primeros botones
+            startPage = 1;
+            endPage = maxButtonsToShow - 1;
+          } else if (currentPage >= cantidadTotalPaginas - sideButtons) {
+            // Si la página actual está cerca del final, se muestran los últimos botones
+            startPage = cantidadTotalPaginas - maxButtonsToShow + 2;
+            endPage = cantidadTotalPaginas;
+          } else {
+            // Si la página actual está en el medio, se muestran los botones alrededor de la página actual
+            startPage = currentPage - sideButtons;
+            endPage = currentPage + sideButtons;
+          }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+          const button = document.createElement("button");
+          button.classList.add("page-button");
+          button.classList.add("col-1");
+          button.classList.add("col-sm-2");
+          button.classList.add("col-md-1");
+          button.classList.add("col-lg-1");
+          button.classList.add("d-flex");
+          button.classList.add("justify-content-center");
+
+          if (i === currentPage) {
+            button.classList.add("active");
+          }
+
+          button.dataset.page = i;
+          button.textContent = i;
+
+          button.addEventListener("click", () => PageButtonsClickEvents(elems, button.dataset.page));
+
+          paginasContainer.appendChild(button);
+          paginasContainer2.appendChild(button.cloneNode(true));
+
+          const clonedButton = paginasContainer2.lastElementChild;
+          clonedButton.addEventListener("click", () => PageButtonsClickEvents(elems, clonedButton.dataset.page));
+        }
+      };    
+
       mostrarElementosPagina(currentPage, all_arr);
       crearBotonesPagina(all_arr);
       const genfilter = document.querySelector(".genf");
