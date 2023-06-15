@@ -22,16 +22,12 @@ const getDateFromTimeStamp = (timestamp) => {
     const anio = fecha.getFullYear();
     let horas = fecha.getHours();
     let minutos = fecha.getMinutes();
-
     const nombreMes = nombresMeses[mes - 1];
-    
     const amPm = horas >= 12 ? "PM" : "AM";
     horas = horas > 12 ? horas - 12 : horas;
-
     dia = dia.toString().padStart(2, "0");
     horas = horas.toString().padStart(2, "0");
     minutos = minutos.toString().padStart(2, "0");
-    
     const fechaFormateada = `${dia}-${nombreMes}-${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
   }
@@ -71,6 +67,7 @@ const getDateFromTimeStamp = (timestamp) => {
         const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
         const elementosPorPagina = 16;
         let currentPage = 1;
+
         const mostrarElementosPagina = (pagina, elems) => {
           const inicio = (pagina - 1) * elementosPorPagina;
           const fin = inicio + elementosPorPagina;
@@ -101,7 +98,7 @@ const getDateFromTimeStamp = (timestamp) => {
             button.dataset.page = i;
             button.textContent = i;
 
-            button.addEventListener("click", function () {
+            button.addEventListener("click", () => {
               const page = parseInt(this.dataset.page);
               currentPage = page;
               mostrarElementosPagina(currentPage, elems);
@@ -126,23 +123,23 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementos = document.getElementsByClassName("elem");
 
         const filtrarElementos = (filtro, btn1, btn2, tipo) => {
+          let divs;
           for (let i = 0; i < elementos.length; i++) {
             elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
           }
           if (btn2.classList.contains("active")) {
             btn2.classList.remove("active");
             btn1.classList.add("active");
-            mostrarElementosPagina(1, filtro);
-            crearBotonesPagina(filtro);
+            divs = filtro;
           } else if (btn1.classList.contains("active")) {
             btn1.classList.remove("active");
-            mostrarElementosPagina(1, all_f);
-            crearBotonesPagina(all_f);
+            divs = all_f;
           } else {
             btn1.classList.add("active");
-            mostrarElementosPagina(1, filtro);
-            crearBotonesPagina(filtro);
+            divs = filtro;
           }
+          mostrarElementosPagina(1, divs);
+          crearBotonesPagina(divs);
         };
 
         genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
