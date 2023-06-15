@@ -60,7 +60,8 @@ const esUrl = (cadena) => {
     `;
     document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
   });
-  
+})();
+(() => {
   const contenedor = document.getElementById("gallery");
   const conjunto = contenedor.getElementsByTagName("div");
   const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
@@ -145,7 +146,7 @@ const esUrl = (cadena) => {
 
   genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
   varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
-})();
+});
 </script>
 <template>
   <main class="text-white">
