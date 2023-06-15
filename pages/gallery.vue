@@ -60,8 +60,7 @@ const esUrl = (cadena) => {
     `;
     document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
   });
-})();
-(() => {
+  
   const elementosPorPagina = 16;
   let currentPage = 1;
 
