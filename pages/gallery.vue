@@ -126,23 +126,23 @@ const getDateFromTimeStamp = (timestamp) => {
         const elementos = document.getElementsByClassName("elem");
 
         const filtrarElementos = (filtro, btn1, btn2, tipo) => {
+          let divs;
           for (let i = 0; i < elementos.length; i++) {
             elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
           }
           if (btn2.classList.contains("active")) {
             btn2.classList.remove("active");
             btn1.classList.add("active");
-            mostrarElementosPagina(1, filtro);
-            crearBotonesPagina(filtro);
+            divs = filtro;
           } else if (btn1.classList.contains("active")) {
             btn1.classList.remove("active");
-            mostrarElementosPagina(1, all_f);
-            crearBotonesPagina(all_f);
+            divs = all_f
           } else {
             btn1.classList.add("active");
-            mostrarElementosPagina(1, filtro);
-            crearBotonesPagina(filtro);
+            divs = filtro
           }
+          mostrarElementosPagina(1, divs);
+          crearBotonesPagina(divs);
         };
 
         genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
