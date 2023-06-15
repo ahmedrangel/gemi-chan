@@ -156,14 +156,14 @@ const esUrl = (cadena) => {
       const gen_btn = document.querySelector(".genf");
       const var_btn = document.querySelector(".varf");
       const elementos = document.getElementsByClassName("elem");
-      
+
       const contenedor = document.getElementById("gallery");
       const conjunto = contenedor.getElementsByTagName("div");
-      const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
-      const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
-      const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
+      const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
+      const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+      const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
 
-      const filtrarElementos = (filtro, btn1, btn2, tipo) => {
+      const filtrarElementos = (divArray, btn1, btn2, tipo) => {
         let divs;
         for (let i = 0; i < elementos.length; i++) {
           elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
@@ -171,20 +171,20 @@ const esUrl = (cadena) => {
         if (btn2.classList.contains("active")) {
           btn2.classList.remove("active");
           btn1.classList.add("active");
-          divs = filtro;
+          divs = divArray;
         } else if (btn1.classList.contains("active")) {
           btn1.classList.remove("active");
-          divs = all_f;
+          divs = all_arr;
         } else {
           btn1.classList.add("active");
-          divs = filtro;
+          divs = divArray;
         }
         mostrarElementosPagina(1, divs);
         crearBotonesPagina(divs);
       };
 
-      gen_btn.addEventListener("click", () => filtrarElementos(gen_f, gen_btn, var_btn, "generacion"));
-      var_btn.addEventListener("click", () => filtrarElementos(var_f, var_btn, gen_btn, "variacion"));
+      gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
+      var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
     }
   }
 </script>
