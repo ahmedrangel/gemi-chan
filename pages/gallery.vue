@@ -123,7 +123,6 @@ const esUrl = (cadena) => {
             elems[i].style.display = "none";
           }
         }
-        actualizarBotonesPagina(elems, pagina);
       };
 
       const PageButtonsClickEvents = (elems, datasetpage) => {
@@ -139,6 +138,7 @@ const esUrl = (cadena) => {
             button.classList.remove("active");
           }
         });
+        actualizarBotonesPagina(elems, page);
         const galleryElement = document.getElementById("titulo");
         galleryElement.scrollIntoView({ behavior: "smooth" });
       };
