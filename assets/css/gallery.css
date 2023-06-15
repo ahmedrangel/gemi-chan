@@ -241,3 +241,7 @@ button:hover i::after {
 #comandos .badge.active:hover {
   background-color: rgb(255 184 252 / 90%)!important;
 }
+
+#comandos h5 {
+  margin: 0px;
+}
