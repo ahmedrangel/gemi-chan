@@ -88,7 +88,7 @@ const esUrl = (cadena) => {
                   </div>
               </div>
               <div id="paginas-container-2" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
-              <div id="gallery" class="row pb-3"></div>
+              <div id="gallery" class="row py-3"></div>
               <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
           </div>
       </div>
@@ -125,6 +125,23 @@ const esUrl = (cadena) => {
         }
       };
 
+      const PageButtonsClickEvents = (elems) => {
+        const page = parseInt(this.dataset.page);
+        currentPage = page;
+        mostrarElementosPagina(currentPage, elems);
+        const buttons = document.querySelectorAll(".page-button");
+        buttons.forEach((button) => {
+          const page = parseInt(button.textContent);
+          if (page === currentPage) {
+            button.classList.add("active");
+          } else {
+            button.classList.remove("active");
+          }
+        });
+        const galleryElement = document.getElementById("titulo");
+        galleryElement.scrollIntoView({ behavior: "smooth" });
+      }
+
       const crearBotonesPagina = (elems) => {
         const paginasContainer = document.getElementById("paginas-container");
         const paginasContainer2 = document.getElementById("paginas-container-2");
@@ -144,42 +161,13 @@ const esUrl = (cadena) => {
           button.dataset.page = i;
           button.textContent = i;
 
-          button.addEventListener("click", function () {
-            const page = parseInt(this.dataset.page);
-            currentPage = page;
-            mostrarElementosPagina(currentPage, elems);
-            const buttons = document.querySelectorAll(".page-button");
-            buttons.forEach((button) => {
-              const page = parseInt(button.textContent);
-              if (page === currentPage) {
-                button.classList.add("active");
-              } else {
-                button.classList.remove("active");
-              }
-            });
-            const galleryElement = document.getElementById("titulo");
-            galleryElement.scrollIntoView({ behavior: "smooth" });
-          });
+          button.addEventListener("click", PageButtonsClickEvents(elems));
+          
           paginasContainer.appendChild(button);
           paginasContainer2.appendChild(button.cloneNode(true));
 
           const clonedButton = paginasContainer2.lastElementChild;
-          clonedButton.addEventListener("click", function () {
-            const page = parseInt(this.dataset.page);
-            currentPage = page;
-            mostrarElementosPagina(currentPage, elems);
-            const buttons = document.querySelectorAll(".page-button");
-            buttons.forEach((button) => {
-              const page = parseInt(button.textContent);
-              if (page === currentPage) {
-                button.classList.add("active");
-              } else {
-                button.classList.remove("active");
-              }
-            });
-            const galleryElement = document.getElementById("titulo");
-            galleryElement.scrollIntoView({ behavior: "smooth" });
-          });
+          clonedButton.addEventListener("click", PageButtonsClickEvents(elems));
 
         }
       };
