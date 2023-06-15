@@ -144,7 +144,7 @@ const esUrl = (cadena) => {
           button.dataset.page = i;
           button.textContent = i;
 
-          const button2 = button.cloneNode(true);
+          button2 = button.cloneNode(true);
 
           button.addEventListener("click", () => {
             const page = parseInt(this.dataset.page);
@@ -163,7 +163,7 @@ const esUrl = (cadena) => {
             galleryElement.scrollIntoView({ behavior: "smooth" });
           });
 
-          button2.addEventListener("click", () => {
+          button.addEventListener("click", () => {
             const page = parseInt(this.dataset.page);
             currentPage = page;
             mostrarElementosPagina(currentPage, elems);
@@ -179,8 +179,9 @@ const esUrl = (cadena) => {
             const galleryElement = document.getElementById("titulo");
             galleryElement.scrollIntoView({ behavior: "smooth" });
           });
+          
           paginasContainer.appendChild(button);
-          paginasContainer2.appendChild(button2);
+          paginasContainer2.appendChild(button.cloneNode(true));
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
