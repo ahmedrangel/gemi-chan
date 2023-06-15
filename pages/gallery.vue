@@ -155,6 +155,8 @@ const esUrl = (cadena) => {
           button.classList.add("col-sm-2");
           button.classList.add("col-md-1");
           button.classList.add("col-lg-1");
+          button.classList.add("d-flex");
+          button.classList.add("justify-content-center");
           if (i == 1) {
             button.classList.add("active");
           }
