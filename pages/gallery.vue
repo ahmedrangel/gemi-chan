@@ -60,7 +60,7 @@ const esUrl = (cadena) => {
     `;
     document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
   });
-  
+
   const elementosPorPagina = 16;
   let currentPage = 1;
 
@@ -144,8 +144,10 @@ const esUrl = (cadena) => {
     crearBotonesPagina(divs);
   };
 
-  gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
-  var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
+  (() => {
+    gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
+    var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
+  })();
 })();
 </script>
 <template>
