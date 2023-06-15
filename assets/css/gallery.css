@@ -179,7 +179,7 @@ button:hover i::after {
 
 @media (max-width: 1200px) {
   #paginas-container, #paginas-container-2 {
-    padding: 0;
+    padding: 0 5px;
   }
 }
 
