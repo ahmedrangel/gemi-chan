@@ -33,7 +33,7 @@ const getDateFromTimeStamp = (timestamp) => {
   }
 };
 
-(() => {
+(async() => {
   console.log(db);
     db.forEach((data) => {
       const esUrl = (cadena) => {
