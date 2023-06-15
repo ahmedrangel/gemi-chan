@@ -151,7 +151,7 @@ const esUrl = (cadena) => {
         for (let i = 1; i <= cantidadTotalPaginas; i++) {
           const button = document.createElement("button");
           button.classList.add("page-button");
-          button.classList.add("col-2");
+          button.classList.add("col-1");
           button.classList.add("col-sm-2");
           button.classList.add("col-md-1");
           button.classList.add("col-lg-1");
