@@ -161,13 +161,13 @@ const esUrl = (cadena) => {
           button.dataset.page = i;
           button.textContent = i;
 
-          button.addEventListener("click", PageButtonsClickEvents(elems, button.dataset.page));
+          button.addEventListener("click", () => PageButtonsClickEvents(elems, button.dataset.page));
 
           paginasContainer.appendChild(button);
           paginasContainer2.appendChild(button.cloneNode(true));
 
           const clonedButton = paginasContainer2.lastElementChild;
-          clonedButton.addEventListener("click", PageButtonsClickEvents(elems, clonedButton.dataset.page));
+          clonedButton.addEventListener("click", () => PageButtonsClickEvents(elems, clonedButton.dataset.page));
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
