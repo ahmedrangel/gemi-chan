@@ -163,6 +163,24 @@ const esUrl = (cadena) => {
           paginasContainer.appendChild(button);
           paginasContainer2.appendChild(button.cloneNode(true));
 
+          const clonedButton = paginasContainer2.lastElementChild;
+          clonedButton.addEventListener("click", function () {
+            const page = parseInt(this.dataset.page);
+            currentPage = page;
+            mostrarElementosPagina(currentPage, elems);
+            const buttons = document.querySelectorAll(".page-button");
+            buttons.forEach((button) => {
+              const page = parseInt(button.textContent);
+              if (page === currentPage) {
+                button.classList.add("active");
+              } else {
+                button.classList.remove("active");
+              }
+            });
+            const galleryElement = document.getElementById("titulo");
+            galleryElement.scrollIntoView({ behavior: "smooth" });
+          });
+
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
