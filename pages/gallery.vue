@@ -33,12 +33,13 @@ const getDateFromTimeStamp = (timestamp) => {
   }
 };
 
+const esUrl = (cadena) => {
+  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return regex.test(cadena);
+};
+
 (async() => {
   db.forEach((data) => {
-    const esUrl = (cadena) => {
-      const regex = /^(ftp|http|https):\/\/[^ "]+$/;
-      return regex.test(cadena);
-    };
     const html = `
       <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
         <div class="card my-1 overflow-hidden text-white border-0">
