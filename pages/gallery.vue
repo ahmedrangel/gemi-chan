@@ -33,12 +33,12 @@ const getDateFromTimeStamp = (timestamp) => {
   }
 };
 
-const esUrl = (cadena) => {
-  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
-  return regex.test(cadena);
-};
 
 (async() => {
+  const esUrl = (cadena) => {
+    const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+    return regex.test(cadena);
+  };
   db.forEach((data) => {
     const html = `
       <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
@@ -140,7 +140,7 @@ const esUrl = (cadena) => {
       mostrarElementosPagina(1, divs);
       crearBotonesPagina(divs);
     };
-    
+
     genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
     varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
   })();
