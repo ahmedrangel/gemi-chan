@@ -125,8 +125,8 @@ const esUrl = (cadena) => {
         }
       };
 
-      const PageButtonsClickEvents = (elems) => {
-        const page = parseInt(this.dataset.page);
+      const PageButtonsClickEvents = (elems, datasetpage) => {
+        const page = parseInt(datasetpage);
         currentPage = page;
         mostrarElementosPagina(currentPage, elems);
         const buttons = document.querySelectorAll(".page-button");
@@ -161,13 +161,13 @@ const esUrl = (cadena) => {
           button.dataset.page = i;
           button.textContent = i;
 
-          button.addEventListener("click", PageButtonsClickEvents(elems));
-          
+          button.addEventListener("click", PageButtonsClickEvents(elems, this.dataset.page));
+
           paginasContainer.appendChild(button);
           paginasContainer2.appendChild(button.cloneNode(true));
 
           const clonedButton = paginasContainer2.lastElementChild;
-          clonedButton.addEventListener("click", PageButtonsClickEvents(elems));
+          clonedButton.addEventListener("click", PageButtonsClickEvents(elems, this.dataset.page));
 
         }
       };
