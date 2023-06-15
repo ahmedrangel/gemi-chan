@@ -36,32 +36,33 @@ const getDateFromTimeStamp = (timestamp) => {
     return fechaFormateada;
   }
 };
+
+const esUrl = (cadena) => {
+  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+  return regex.test(cadena);
+};
+
 (async() => {
-  console.log(db);
     db.forEach((data) => {
-      const esUrl = (cadena) => {
-        const regex = /^(ftp|http|https):\/\/[^ "]+$/;
-        return regex.test(cadena);
-      };
-        const html = `
-        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
-          <div class="card my-1 overflow-hidden text-white border-0">
-            ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
-            ${data.discordUser === null ? '' : '</div>'}
-            <div>
-              <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
-                ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
-              </div>
-              <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
+      const html = `
+      <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
+        <div class="card my-1 overflow-hidden text-white border-0">
+          ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
+          ${data.discordUser === null ? '' : '</div>'}
+          <div>
+            <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
+              ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
             </div>
-            <div class="card-body card-desc text-white">
-              ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
-              <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
-            </div>
+            <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
+          </div>
+          <div class="card-body card-desc text-white">
+            ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
+            <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
           </div>
         </div>
-        `;
-        document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
+      </div>
+      `;
+      document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
     });
     (() => {
         const contenedor = document.getElementById("gallery");
