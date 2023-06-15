@@ -144,7 +144,26 @@ const esUrl = (cadena) => {
           button.dataset.page = i;
           button.textContent = i;
 
-          button.addEventListener("click", function () {
+          const button2 = button.cloneNode(true);
+
+          button.addEventListener("click", () => {
+            const page = parseInt(this.dataset.page);
+            currentPage = page;
+            mostrarElementosPagina(currentPage, elems);
+            const buttons = document.querySelectorAll(".page-button");
+            buttons.forEach((button) => {
+              const page = parseInt(button.textContent);
+              if (page === currentPage) {
+                button.classList.add("active");
+              } else {
+                button.classList.remove("active");
+              }
+            });
+            const galleryElement = document.getElementById("titulo");
+            galleryElement.scrollIntoView({ behavior: "smooth" });
+          });
+
+          button2.addEventListener("click", () => {
             const page = parseInt(this.dataset.page);
             currentPage = page;
             mostrarElementosPagina(currentPage, elems);
@@ -161,7 +180,7 @@ const esUrl = (cadena) => {
             galleryElement.scrollIntoView({ behavior: "smooth" });
           });
           paginasContainer.appendChild(button);
-          paginasContainer2.appendChild(button.cloneNode(true));
+          paginasContainer2.appendChild(button2);
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
