@@ -121,8 +121,8 @@ const esUrl = (cadena) => {
             paginasContainer.appendChild(button);
           }
         };
-        mostrarElementosPagina(currentPage, divs);
-        crearBotonesPagina(divs);
+        mostrarElementosPagina(1, all_arr);
+        crearBotonesPagina(all_arr);
         const genfilter = document.querySelector(".genf");
         const varfilter = document.querySelector(".varf");
         const elementos = document.getElementsByClassName("elem");
