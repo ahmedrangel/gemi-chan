@@ -100,11 +100,6 @@ const esUrl = (cadena) => {
         });
       });
 
-      const contenedor = document.getElementById("gallery");
-      const conjunto = contenedor.getElementsByTagName("div");
-      const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
-      const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
-      const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
       const elementosPorPagina = 16;
       let currentPage = 1;
 
@@ -158,9 +153,15 @@ const esUrl = (cadena) => {
         }
       };
 
-      const genfilter = document.querySelector(".genf");
-      const varfilter = document.querySelector(".varf");
+      const gen_btn = document.querySelector(".genf");
+      const var_btn = document.querySelector(".varf");
       const elementos = document.getElementsByClassName("elem");
+      
+      const contenedor = document.getElementById("gallery");
+      const conjunto = contenedor.getElementsByTagName("div");
+      const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
+      const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+      const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
 
       const filtrarElementos = (filtro, btn1, btn2, tipo) => {
         let divs;
@@ -182,8 +183,8 @@ const esUrl = (cadena) => {
         crearBotonesPagina(divs);
       };
 
-      genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
-      varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
+      gen_btn.addEventListener("click", () => filtrarElementos(gen_f, gen_btn, var_btn, "generacion"));
+      var_btn.addEventListener("click", () => filtrarElementos(var_f, var_btn, gen_btn, "variacion"));
     }
   }
 </script>
