@@ -61,6 +61,93 @@ const esUrl = (cadena) => {
     document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
   });
 })();
+(() => {
+  const elementosPorPagina = 16;
+  let currentPage = 1;
+
+  const mostrarElementosPagina = (pagina, elems) => {
+    const inicio = (pagina - 1) * elementosPorPagina;
+    const fin = inicio + elementosPorPagina;
+
+    for (let i = 0; i < elems.length; i++) {
+      if (i >= inicio && i < fin) {
+        elems[i].style.display = "block";
+      } else {
+        elems[i].style.display = "none";
+      }
+    }
+  };
+
+  const crearBotonesPagina = (elems) => {
+    const paginasContainer = document.getElementById("paginas-container");
+    paginasContainer.innerHTML = "";
+    const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
+    for (let i = 1; i <= cantidadTotalPaginas; i++) {
+      const button = document.createElement("button");
+      button.classList.add("page-button");
+      button.classList.add("col-2");
+      button.classList.add("col-sm-2");
+      button.classList.add("col-md-1");
+      button.classList.add("col-lg-1");
+      if (i == 1) {
+        button.classList.add("active");
+      }
+      button.dataset.page = i;
+      button.textContent = i;
+
+      button.addEventListener("click", () => {
+        const page = parseInt(this.dataset.page);
+        currentPage = page;
+        mostrarElementosPagina(currentPage, elems);
+        const buttons = document.querySelectorAll(".page-button");
+        buttons.forEach((button) => {
+          const page = parseInt(button.textContent);
+          if (page === currentPage) {
+            button.classList.add("active");
+          } else {
+            button.classList.remove("active");
+          }
+        });
+        const galleryElement = document.getElementById("titulo");
+        galleryElement.scrollIntoView({ behavior: "smooth" });
+      });
+      paginasContainer.appendChild(button);
+    }
+  };
+
+  const gen_btn = document.querySelector(".genf");
+  const var_btn = document.querySelector(".varf");
+  const elementos = document.getElementsByClassName("elem");
+
+  const contenedor = document.getElementById("gallery");
+  const conjunto = contenedor.getElementsByTagName("div");
+  const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
+  const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+  const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
+
+  const filtrarElementos = (divArray, btn1, btn2, tipo) => {
+    let divs;
+    for (let i = 0; i < elementos.length; i++) {
+      elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
+    }
+    if (btn2.classList.contains("active")) {
+      btn2.classList.remove("active");
+      btn1.classList.add("active");
+      divs = divArray;
+    } else if (btn1.classList.contains("active")) {
+      btn1.classList.remove("active");
+      divs = all_arr;
+    } else {
+      btn1.classList.add("active");
+      divs = divArray;
+    }
+    mostrarElementosPagina(1, divs);
+    crearBotonesPagina(divs);
+  };
+
+  gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
+  var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
+});
 </script>
 <template>
   <main class="text-white">
@@ -99,92 +186,6 @@ const esUrl = (cadena) => {
           boundary: "window"
         });
       });
-
-      const elementosPorPagina = 16;
-      let currentPage = 1;
-
-      const mostrarElementosPagina = (pagina, elems) => {
-        const inicio = (pagina - 1) * elementosPorPagina;
-        const fin = inicio + elementosPorPagina;
-
-        for (let i = 0; i < elems.length; i++) {
-          if (i >= inicio && i < fin) {
-            elems[i].style.display = "block";
-          } else {
-            elems[i].style.display = "none";
-          }
-        }
-      };
-
-      const crearBotonesPagina = (elems) => {
-        const paginasContainer = document.getElementById("paginas-container");
-        paginasContainer.innerHTML = "";
-        const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
-        for (let i = 1; i <= cantidadTotalPaginas; i++) {
-          const button = document.createElement("button");
-          button.classList.add("page-button");
-          button.classList.add("col-2");
-          button.classList.add("col-sm-2");
-          button.classList.add("col-md-1");
-          button.classList.add("col-lg-1");
-          if (i == 1) {
-            button.classList.add("active");
-          }
-          button.dataset.page = i;
-          button.textContent = i;
-
-          button.addEventListener("click", () => {
-            const page = parseInt(this.dataset.page);
-            currentPage = page;
-            mostrarElementosPagina(currentPage, elems);
-            const buttons = document.querySelectorAll(".page-button");
-            buttons.forEach((button) => {
-              const page = parseInt(button.textContent);
-              if (page === currentPage) {
-                button.classList.add("active");
-              } else {
-                button.classList.remove("active");
-              }
-            });
-            const galleryElement = document.getElementById("titulo");
-            galleryElement.scrollIntoView({ behavior: "smooth" });
-          });
-          paginasContainer.appendChild(button);
-        }
-      };
-
-      const gen_btn = document.querySelector(".genf");
-      const var_btn = document.querySelector(".varf");
-      const elementos = document.getElementsByClassName("elem");
-
-      const contenedor = document.getElementById("gallery");
-      const conjunto = contenedor.getElementsByTagName("div");
-      const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
-      const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
-      const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
-
-      const filtrarElementos = (divArray, btn1, btn2, tipo) => {
-        let divs;
-        for (let i = 0; i < elementos.length; i++) {
-          elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
-        }
-        if (btn2.classList.contains("active")) {
-          btn2.classList.remove("active");
-          btn1.classList.add("active");
-          divs = divArray;
-        } else if (btn1.classList.contains("active")) {
-          btn1.classList.remove("active");
-          divs = all_arr;
-        } else {
-          btn1.classList.add("active");
-          divs = divArray;
-        }
-        mostrarElementosPagina(1, divs);
-        crearBotonesPagina(divs);
-      };
-
-      gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
-      var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
     }
   }
 </script>
