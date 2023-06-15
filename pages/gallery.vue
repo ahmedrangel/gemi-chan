@@ -161,7 +161,7 @@ const esUrl = (cadena) => {
             galleryElement.scrollIntoView({ behavior: "smooth" });
           });
           paginasContainer.appendChild(button);
-          paginasContainer2.appendChild(button);
+          paginasContainer2.appendChild(button.cloneNode(true));
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
