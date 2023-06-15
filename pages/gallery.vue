@@ -147,7 +147,7 @@ const esUrl = (cadena) => {
 
   gen_btn.addEventListener("click", () => filtrarElementos(gen_arr, gen_btn, var_btn, "generacion"));
   var_btn.addEventListener("click", () => filtrarElementos(var_arr, var_btn, gen_btn, "variacion"));
-});
+})();
 </script>
 <template>
   <main class="text-white">
