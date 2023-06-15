@@ -167,9 +167,19 @@ button:hover i::after {
   font-size: 1.1rem;
 }
 
+#paginas-container, #paginas-container-2 {
+  padding: 0 50px;
+}
+
 @media (min-width: 1200px) {
   .container {
       max-width: 1200px!important;
+  }
+}
+
+@media (max-width: 1200px) {
+  #paginas-container, #paginas-container-2 {
+    padding: 0;
   }
 }
 
