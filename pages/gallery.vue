@@ -22,129 +22,134 @@ const getDateFromTimeStamp = (timestamp) => {
     const anio = fecha.getFullYear();
     let horas = fecha.getHours();
     let minutos = fecha.getMinutes();
+
     const nombreMes = nombresMeses[mes - 1];
+    
     const amPm = horas >= 12 ? "PM" : "AM";
     horas = horas > 12 ? horas - 12 : horas;
+
     dia = dia.toString().padStart(2, "0");
     horas = horas.toString().padStart(2, "0");
     minutos = minutos.toString().padStart(2, "0");
+    
     const fechaFormateada = `${dia}-${nombreMes}-${anio}・${horas}:${minutos} ${amPm}`;
     return fechaFormateada;
   }
 };
-
-
 (async() => {
-  const esUrl = (cadena) => {
-    const regex = /^(ftp|http|https):\/\/[^ "]+$/;
-    return regex.test(cadena);
-  };
-  db.forEach((data) => {
-    const html = `
-      <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
-        <div class="card my-1 overflow-hidden text-white border-0">
-          ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
-          ${data.discordUser === null ? '' : '</div>'}
-          <div>
-            <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
-              ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
+  console.log(db);
+    db.forEach((data) => {
+      const esUrl = (cadena) => {
+        const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+        return regex.test(cadena);
+      };
+        const html = `
+        <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
+          <div class="card my-1 overflow-hidden text-white border-0">
+            ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
+            ${data.discordUser === null ? '' : '</div>'}
+            <div>
+              <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
+                ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
+              </div>
+              <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
             </div>
-            <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
-          </div>
-          <div class="card-body card-desc text-white">
-            ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
-            <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
+            <div class="card-body card-desc text-white">
+              ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
+              <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
+            </div>
           </div>
         </div>
-      </div>
-    `;
-    document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
-  });
-  (() => {
-    const contenedor = document.getElementById("gallery");
-    const conjunto = contenedor.getElementsByTagName("div");
-    const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
-    const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
-    const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
-    const elementosPorPagina = 16;
-    let currentPage = 1;
+        `;
+        document.querySelector("#gallery").insertAdjacentHTML("beforeend", html);
+    });
+    (() => {
+        const contenedor = document.getElementById("gallery");
+        const conjunto = contenedor.getElementsByTagName("div");
+        const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
+        const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+        const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
+        const elementosPorPagina = 16;
+        let currentPage = 1;
+        const mostrarElementosPagina = (pagina, elems) => {
+          const inicio = (pagina - 1) * elementosPorPagina;
+          const fin = inicio + elementosPorPagina;
 
-    const mostrarElementosPagina = (pagina, elems) => {
-      const inicio = (pagina - 1) * elementosPorPagina;
-      const fin = inicio + elementosPorPagina;
-      for (let i = 0; i < elems.length; i++) {
-        if (i >= inicio && i < fin) {
-          elems[i].style.display = "block";
-        } else {
-          elems[i].style.display = "none";
-        }
-      }
-    };
-
-    const crearBotonesPagina = (elems) => {
-      const paginasContainer = document.getElementById("paginas-container");
-      paginasContainer.innerHTML = "";
-      const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
-      for (let i = 1; i <= cantidadTotalPaginas; i++) {
-        const button = document.createElement("button");
-        button.classList.add("page-button");
-        button.classList.add("col-2");
-        button.classList.add("col-sm-2");
-        button.classList.add("col-md-1");
-        button.classList.add("col-lg-1");
-        if (i == 1) {
-          button.classList.add("active");
-        }
-        button.dataset.page = i;
-        button.textContent = i;
-        button.addEventListener("click", () => {
-          const page = parseInt(this.dataset.page);
-          currentPage = page;
-          mostrarElementosPagina(currentPage, elems);
-          const buttons = document.querySelectorAll(".page-button");
-          buttons.forEach((button) => {
-            const page = parseInt(button.textContent);
-            if (page === currentPage) {
-              button.classList.add("active");
+          for (let i = 0; i < elems.length; i++) {
+            if (i >= inicio && i < fin) {
+              elems[i].style.display = "block";
             } else {
-              button.classList.remove("active");
+              elems[i].style.display = "none";
             }
-          });
-          const galleryElement = document.getElementById("titulo");
-          galleryElement.scrollIntoView({ behavior: "smooth" });
-        });
-        paginasContainer.appendChild(button);
-      }
-    };
+          }
+        };
 
-    const genfilter = document.querySelector(".genf");
-    const varfilter = document.querySelector(".varf");
-    const elementos = document.getElementsByClassName("elem");
+        const crearBotonesPagina = (elems) => {
+          const paginasContainer = document.getElementById("paginas-container");
+          paginasContainer.innerHTML = "";
+          const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
+          for (let i = 1; i <= cantidadTotalPaginas; i++) {
+            const button = document.createElement("button");
+            button.classList.add("page-button");
+            button.classList.add("col-2");
+            button.classList.add("col-sm-2");
+            button.classList.add("col-md-1");
+            button.classList.add("col-lg-1");
+            if (i == 1) {
+              button.classList.add("active");
+            }
+            button.dataset.page = i;
+            button.textContent = i;
 
-    const filtrarElementos = (filtro, btn1, btn2, tipo) => {
-      let divs;
-      for (let i = 0; i < elementos.length; i++) {
-        elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
-      }
-      if (btn2.classList.contains("active")) {
-        btn2.classList.remove("active");
-        btn1.classList.add("active");
-        divs = filtro;
-      } else if (btn1.classList.contains("active")) {
-        btn1.classList.remove("active");
-        divs = all_f;
-      } else {
-        btn1.classList.add("active");
-        divs = filtro;
-      }
-      mostrarElementosPagina(1, divs);
-      crearBotonesPagina(divs);
-    };
+            button.addEventListener("click", function () {
+              const page = parseInt(this.dataset.page);
+              currentPage = page;
+              mostrarElementosPagina(currentPage, elems);
+              const buttons = document.querySelectorAll(".page-button");
+              buttons.forEach((button) => {
+                const page = parseInt(button.textContent);
+                if (page === currentPage) {
+                  button.classList.add("active");
+                } else {
+                  button.classList.remove("active");
+                }
+              });
+              const galleryElement = document.getElementById("titulo");
+              galleryElement.scrollIntoView({ behavior: "smooth" });
+            });
+            paginasContainer.appendChild(button);
+          }
+        };
 
-    genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
-    varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
+        const genfilter = document.querySelector(".genf");
+        const varfilter = document.querySelector(".varf");
+        const elementos = document.getElementsByClassName("elem");
+
+        const filtrarElementos = (filtro, btn1, btn2, tipo) => {
+          for (let i = 0; i < elementos.length; i++) {
+            elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
+          }
+          if (btn2.classList.contains("active")) {
+            btn2.classList.remove("active");
+            btn1.classList.add("active");
+            mostrarElementosPagina(1, filtro);
+            crearBotonesPagina(filtro);
+          } else if (btn1.classList.contains("active")) {
+            btn1.classList.remove("active");
+            mostrarElementosPagina(1, all_f);
+            crearBotonesPagina(all_f);
+          } else {
+            btn1.classList.add("active");
+            mostrarElementosPagina(1, filtro);
+            crearBotonesPagina(filtro);
+          }
+        };
+
+        genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
+        varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
+
+      })();
   })();
-})();
 </script>
 <template>
   <main class="text-white">
