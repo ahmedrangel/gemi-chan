@@ -87,9 +87,8 @@ const esUrl = (cadena) => {
                     </h5>
                   </div>
               </div>
-              <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
               <div id="gallery" class="row pb-3"></div>
-              <div id="paginas-container2" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
+              <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
           </div>
       </div>
     </div>
@@ -127,9 +126,7 @@ const esUrl = (cadena) => {
 
       const crearBotonesPagina = (elems) => {
         const paginasContainer = document.getElementById("paginas-container");
-        const paginasContainer2 = document.getElementById("paginas-container2");
         paginasContainer.innerHTML = "";
-        paginasContainer2.innerHTML = "";
         const cantidadTotalPaginas = Math.ceil(elems.length / elementosPorPagina);
         for (let i = 1; i <= cantidadTotalPaginas; i++) {
           const button = document.createElement("button");
@@ -161,7 +158,6 @@ const esUrl = (cadena) => {
             galleryElement.scrollIntoView({ behavior: "smooth" });
           });
           paginasContainer.appendChild(button);
-          paginasContainer2.appendChild(button);
         }
       };
       mostrarElementosPagina(currentPage, all_arr);
