@@ -67,9 +67,9 @@ const esUrl = (cadena) => {
     (() => {
         const contenedor = document.getElementById("gallery");
         const conjunto = contenedor.getElementsByTagName("div");
-        const all_f = Array.from(conjunto).filter(elemento => elemento.id === "images");
-        const gen_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
-        const var_f = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
+        const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
+        const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
+        const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
         const elementosPorPagina = 16;
         let currentPage = 1;
         const mostrarElementosPagina = (pagina, elems) => {
@@ -137,17 +137,17 @@ const esUrl = (cadena) => {
             divs = filtro;
           } else if (btn1.classList.contains("active")) {
             btn1.classList.remove("active");
-            divs = all_f
+            divs = all_arr;
           } else {
             btn1.classList.add("active");
-            divs = filtro
+            divs = filtro;
           }
           mostrarElementosPagina(1, divs);
           crearBotonesPagina(divs);
         };
 
-        genfilter.addEventListener("click", () => filtrarElementos(gen_f, genfilter, varfilter, "generacion"));
-        varfilter.addEventListener("click", () => filtrarElementos(var_f, varfilter, genfilter, "variacion"));
+        genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, "generacion"));
+        varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, "variacion"));
 
       })();
   })();
