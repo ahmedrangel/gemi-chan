@@ -77,10 +77,10 @@ const esUrl = (cadena) => {
                   <h5 id="descripcion" class="fw-light">Obtenido a través de peticiones de usuarios al interactuar con comandos con el bot de Discord Gemi-chan.</h5>
                   <div id="comandos">
                     <h5>
-                      <span class="badge genf fw-normal" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar por: generación">
+                      <span class="badge genf fw-normal">
                         <span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>
                       /generar
-                      </span> <span class="badge varf fw-normal" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Filtrar por: variación">
+                      </span> <span class="badge varf fw-normal">
                         <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                       /variar
                       </span>
