@@ -64,6 +64,8 @@ button.page-button {
   font-size: 1rem;
   padding: 0.7rem 0.7rem;
   transition: 0.2s;
+  margin: 1px;
+  border: 1px solid rgb(0 0 0 / 70%);
 }
 
 button:hover {
