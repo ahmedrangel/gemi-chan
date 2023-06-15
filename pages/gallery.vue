@@ -87,9 +87,9 @@ const esUrl = (cadena) => {
                     </h5>
                   </div>
               </div>
-              <div id="paginas-container-2" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
-              <div id="gallery" class="row py-3"></div>
-              <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center"></div>
+              <div id="paginas-container-2" style="--clr:#ffb8fc;" class="row justify-content-center py-3"></div>
+              <div id="gallery" class="row"></div>
+              <div id="paginas-container" style="--clr:#ffb8fc;" class="row justify-content-center pt-3"></div>
           </div>
       </div>
     </div>
