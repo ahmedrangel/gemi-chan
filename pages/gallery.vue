@@ -217,7 +217,7 @@ const esUrl = (cadena) => {
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
       const p18_filter = document.querySelectorAll(".anime-p18");
-      const p18_over = document.querySelectorAll(".p18");
+      const p18_over = document.querySelectorAll(".body-image");
 
       const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
         let divs;
