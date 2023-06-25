@@ -214,7 +214,7 @@ const esUrl = (cadena) => {
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
 
-      const filtrarElementos = (filtro, btn1, btn2, tipo) => {
+      const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
         let divs;
         for (let i = 0; i < elementos.length; i++) {
           elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
@@ -237,7 +237,7 @@ const esUrl = (cadena) => {
 
       genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, anifilter, "generacion"));
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
-      anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter,"anime"));
+      anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
     }
   }
 </script>
