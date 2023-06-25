@@ -246,3 +246,9 @@ button:hover i::after {
 #comandos h5 {
   margin: 0px;
 }
+
+.p18 {
+  position: absolute;
+  margin-top: 42%;
+  margin-left: 43%;
+}
