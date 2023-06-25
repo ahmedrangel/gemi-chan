@@ -44,10 +44,7 @@ const esUrl = (cadena) => {
 
 (async() => {
     db.forEach((data) => {
-      let type;
-      let icon;
-      let title;
-      let command;
+      let type, icon, title, command;
       switch (data.command) {
         case "generar":
           type = "generacion";
@@ -247,7 +244,7 @@ const esUrl = (cadena) => {
 
       genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, anifilter, "generacion"));
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
-      anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
+      anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime" || "animep18"));
       p18_filter.forEach((filter) => {
         filter.addEventListener("click", () => {
           p18_over.forEach((filter2) => {
