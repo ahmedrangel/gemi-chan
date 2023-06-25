@@ -251,4 +251,5 @@ button:hover i::after {
   position: absolute;
   margin-top: 42%;
   margin-left: 43%;
+  display: block;
 }
