@@ -86,7 +86,7 @@ const esUrl = (cadena) => {
             <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
           </div>
           <div class="card-body card-desc text-white">
-            ${esUrl(title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
+            ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(title)}</h5>` : `<h5 class="card-title">Variación de: <a href="Variación de: ${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
             <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
           </div>
         </div>
