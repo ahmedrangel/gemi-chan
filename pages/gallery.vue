@@ -47,24 +47,29 @@ const esUrl = (cadena) => {
       let type;
       let icon;
       let title;
+      let command;
       switch (data.command) {
         case "generar":
           type = "generacion";
+          command = "generar";
           title = data.title;
           icon = "ph:terminal-window-duotone";
           break;
         case "variar":
           type = "variacion";
+          command = "variar";
           title = "Variación de: " + data.title;
           icon = "ph:cube-duotone";
           break;
         case "anime":
           type = "anime";
+          command = "animeia";
           title = data.title;
           icon = "ph:person-simple-duotone";
           break;
         case "anime-p18":
           type = "animep18";
+          command = "animeia"
           title = data.title;
           icon = "ph:person-simple-duotone";
           break;
@@ -83,7 +88,7 @@ const esUrl = (cadena) => {
             <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="${type}">
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
-            <div class="${data.command}">
+            <div class="${command}">
               ${type == "animep18" ? `<div class="p18-overlay position-absolute"><h5 class="p18 d-block position-absolute">+18</h5></div>` : ``}
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
             </div>
