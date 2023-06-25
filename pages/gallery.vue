@@ -44,19 +44,49 @@ const esUrl = (cadena) => {
 
 (async() => {
     db.forEach((data) => {
+      let type;
+      let icon;
+      let title;
+      switch (data.command) {
+        case "generar":
+          type = "generacion";
+          title = data.title;
+          icon = "ph:terminal-window-duotone";
+          break;
+        case "variar":
+          type = "variacion";
+          title = "Variación de: " + data.title;
+          icon = "ph:cube-duotone";
+          break;
+        case "anime":
+          type = "anime";
+          title = data.title;
+          icon = "ph:person-simple-duotone";
+          break;
+        case "anime-p18":
+          type = "animep18";
+          title = data.title;
+          icon = "ph:person-simple-duotone";
+          break;
+        default:
+          type = "";
+          icon = "";
+          title = "";
+          break;
+      }
       const html = `
-      <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${esUrl(data.title) === true ? "variacion" : "generacion"}">
+      <div id="images" class="col-6 col-sm-6 col-md-6 col-lg-3 elem ${type}">
         <div class="card my-1 overflow-hidden text-white border-0">
           ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
           ${data.discordUser === null ? '' : '</div>'}
           <div>
-            <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title=
-              ${esUrl(data.title) === true ? '"variación"><span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>' : '"generación"><span class="iconify" data-icon="ph:terminal-window-duotone" data-inline="false"></span>'}
+            <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="${type}">
+              <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
-            <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${data.title}" style="width: 100%;">
+            <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
           </div>
           <div class="card-body card-desc text-white">
-            ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(data.title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
+            ${esUrl(title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(title)}</h5>` : `<h5 class="card-title">Variación de: <a href="${title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
             <small class="footer-card-color m-0">${getDateFromTimeStamp(data.timestamp)}</small>
           </div>
         </div>
@@ -83,6 +113,9 @@ const esUrl = (cadena) => {
                       </span> <span class="badge varf fw-normal">
                         <span class="iconify" data-icon="ph:cube-duotone" data-inline="false"></span>
                       /variar
+                      </span> <span class="badge anif fw-normal">
+                        <span class="iconify" data-icon="ph:person-simple-duotone" data-inline="false"></span>
+                      /animeia
                       </span>
                     </h5>
                   </div>
@@ -110,6 +143,7 @@ const esUrl = (cadena) => {
       const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
       const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
       const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
+      const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime"));
       const elementosPorPagina = 16;
       let currentPage = 1;
       const mostrarElementosPagina = (pagina, elems) => {
@@ -177,6 +211,7 @@ const esUrl = (cadena) => {
       crearBotonesPagina(all_arr);
       const genfilter = document.querySelector(".genf");
       const varfilter = document.querySelector(".varf");
+      const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
 
       const filtrarElementos = (filtro, btn1, btn2, tipo) => {
