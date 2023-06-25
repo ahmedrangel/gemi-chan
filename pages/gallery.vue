@@ -216,7 +216,7 @@ const esUrl = (cadena) => {
       const varfilter = document.querySelector(".varf");
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
-      const p18_filter = document.querySelectorAll(".body-image");
+      const p18_filter = document.querySelectorAll(".anime-p18");
       const p18_over = document.querySelectorAll(".p18");
 
       const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
@@ -246,7 +246,7 @@ const esUrl = (cadena) => {
       p18_filter.forEach((filter) => {
         filter.addEventListener("click", () => {
           p18_over.forEach((filter2) => {
-            filter2.style.display = "none!important";
+            filter2.style.display = "none";
           })
           
         });
