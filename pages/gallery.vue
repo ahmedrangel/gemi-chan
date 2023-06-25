@@ -146,7 +146,7 @@ const esUrl = (cadena) => {
       const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
       const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
       const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
-      const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime"));
+      const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime") || elemento.classList.contains("anime-p18"));
       const elementosPorPagina = 16;
       let currentPage = 1;
       const mostrarElementosPagina = (pagina, elems) => {
@@ -248,7 +248,6 @@ const esUrl = (cadena) => {
           p18_over.forEach((filter2) => {
             filter2.style.setProperty("display", "none", "important");
           })
-          
         });
       });
     }
