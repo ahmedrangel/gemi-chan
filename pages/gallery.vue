@@ -247,7 +247,7 @@ const esUrl = (cadena) => {
       p18_filter.forEach((filter) => {
         filter.addEventListener("click", () => {
           p18_over.forEach((filter2) => {
-            filter2.style.display = "none";
+            filter2.style.display = "none!important";
           })
           
         });
