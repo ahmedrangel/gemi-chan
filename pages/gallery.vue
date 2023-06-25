@@ -219,8 +219,9 @@ const esUrl = (cadena) => {
         for (let i = 0; i < elementos.length; i++) {
           elementos[i].style.display = elementos[i].classList.contains(tipo) ? "block" : "none";
         }
-        if (btn2.classList.contains("active")) {
+        if (btn2.classList.contains("active") || btn3.classList.contains("active")) {
           btn2.classList.remove("active");
+          btn3.classList.remove("active");
           btn1.classList.add("active");
           divs = filtro;
         } else if (btn1.classList.contains("active")) {
@@ -234,8 +235,9 @@ const esUrl = (cadena) => {
         crearBotonesPagina(divs);
       };
 
-      genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, "generacion"));
-      varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, "variacion"));
+      genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, anifilter, "generacion"));
+      varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
+      anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter,"anime"));
     }
   }
 </script>
