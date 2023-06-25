@@ -64,7 +64,7 @@ const esUrl = (cadena) => {
           icon = "ph:person-simple-duotone";
           break;
         case "anime-p18":
-          type = "a-p18";
+          type = "animep18";
           title = data.title;
           icon = "ph:person-simple-duotone";
           break;
@@ -146,7 +146,7 @@ const esUrl = (cadena) => {
       const all_arr = Array.from(conjunto).filter(elemento => elemento.id === "images");
       const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
       const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
-      const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime"));
+      const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime") || elemento.classList.contains("anime-p18"));
       const elementosPorPagina = 16;
       let currentPage = 1;
       const mostrarElementosPagina = (pagina, elems) => {
