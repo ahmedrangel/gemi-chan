@@ -248,7 +248,7 @@ const esUrl = (cadena) => {
 
       for (let i = 0; i < p18_filter.length; i++) {
         p18_filter[i].addEventListener("click", () => {
-          this.style.display = "none";
+          p18_over.style.display = "none";
         });
       }
     }
