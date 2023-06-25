@@ -79,7 +79,7 @@ const esUrl = (cadena) => {
         <div class="card my-1 overflow-hidden text-white border-0">
           ${data.discordUser === null ? '' : `<div class="card-body card-head d-flex align-items-center"><img class="me-2 img-fluid" src="/images/discord-mark-white.svg" alt="Discord" style="max-width: 16px;"><small class="card-title m-0">${data.discordUser}</small>`}   
           ${data.discordUser === null ? '' : '</div>'}
-          <div>
+          <div class ="body-image position-relative">
             <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="${type}">
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
