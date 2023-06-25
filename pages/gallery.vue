@@ -218,6 +218,8 @@ const esUrl = (cadena) => {
       const varfilter = document.querySelector(".varf");
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
+      const p18_filter = document.querySelector(".animep18 .filter");
+      const p18_over = document.querySelector(".p18");
 
       const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
         let divs;
@@ -243,6 +245,10 @@ const esUrl = (cadena) => {
       genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, anifilter, "generacion"));
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
       anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
+
+      p18_filter.addEventListener("click", () => {
+        p18_over.style.display = "none";
+      });
     }
   }
 </script>
