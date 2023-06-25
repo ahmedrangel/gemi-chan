@@ -246,9 +246,10 @@ const esUrl = (cadena) => {
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
       anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
       p18_filter.forEach((filter) => {
-      filter.addEventListener("click", () => {
-        p18_over.style.display = "none";
+        filter.addEventListener("click", () => {
+          p18_over.style.display = "none";
+        });
       });
-    });
+    }
   }
 </script>
