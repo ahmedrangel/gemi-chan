@@ -149,7 +149,7 @@ const esUrl = (cadena) => {
       const gen_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("generacion"));
       const var_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("variacion"));
       const ani_arr = Array.from(conjunto).filter(elemento => elemento.classList.contains("anime"));
-      const elementosPorPagina = 16;
+      const elementosPorPagina = 20;
       let currentPage = 1;
       const mostrarElementosPagina = (pagina, elems) => {
         const inicio = (pagina - 1) * elementosPorPagina;
