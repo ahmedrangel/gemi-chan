@@ -84,7 +84,7 @@ const esUrl = (cadena) => {
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
             <div class="filter">
-              ${type == "animep18" ? `<h5 class="p18">+18</h5>"` : ``}
+              ${type == "animep18" ? `<h5 class="p18">+18</h5>` : ``}
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
             </div>
           </div>
