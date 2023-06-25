@@ -84,8 +84,8 @@ const esUrl = (cadena) => {
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
             <div class="${data.command}">
-              ${type == "animep18" ? `<h5 class="p18">+18</h5>` : ``}
-              <div class="overlay"></div>
+              ${type == "animep18" ? `<h5 class="p18 d-block position-absolute">+18</h5>` : ``}
+              <div class="overlay position-absolute"></div>
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
             </div>
           </div>
