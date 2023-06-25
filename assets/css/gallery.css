@@ -208,6 +208,7 @@ button:hover i::after {
   width: 26px;
   height: 26px;
   font-size: 24px;
+  z-index: 1;
 }
 
 #gallery>* {
