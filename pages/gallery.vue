@@ -247,6 +247,7 @@ const esUrl = (cadena) => {
         filter.addEventListener("click", () => {
           p18_over.forEach((filter2) => {
             filter2.style.setProperty("display", "none", "important");
+            filter2.style.setProperty("background-color", "unset", "important");
           })
           
         });
