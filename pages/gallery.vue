@@ -83,7 +83,7 @@ const esUrl = (cadena) => {
             <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="${type}">
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
-            <div class="filter">
+            <div class="${data.command}">
               ${type == "animep18" ? `<h5 class="p18">+18</h5>` : ``}
               <div class="overlay">
                 <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
@@ -218,7 +218,7 @@ const esUrl = (cadena) => {
       const varfilter = document.querySelector(".varf");
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
-      const p18_filter = document.querySelector(".animep18 .filter");
+      const p18_filter = document.getElementsByClassName("anime-p18");
       const p18_over = document.querySelector(".p18");
 
       const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
@@ -246,9 +246,11 @@ const esUrl = (cadena) => {
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
       anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
 
-      p18_filter.addEventListener("click", () => {
-        p18_over.style.display = "none";
-      });
+      for (let i = 0; i < p18_filter.length; i++) {
+        p18_filter[i].addEventListener("click", () => {
+          this.style.display = "none";
+        });
+      }
     }
   }
 </script>
