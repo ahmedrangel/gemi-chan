@@ -84,7 +84,7 @@ const esUrl = (cadena) => {
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
             <div class="${data.command}">
-              ${type == "animep18" ? `<h5 class="p18 d-block position-absolute">+18</h5><div class="overlay position-absolute"></div>` : ``}
+              ${type == "animep18" ? `<div class="overlay position-absolute"><h5 class="p18 d-block position-absolute">+18</h5></div>` : ``}
               <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
             </div>
           </div>
@@ -217,7 +217,7 @@ const esUrl = (cadena) => {
       const anifilter = document.querySelector(".anif");
       const elementos = document.getElementsByClassName("elem");
       const p18_filter = document.querySelectorAll(".anime-p18");
-      const p18_over = document.querySelectorAll(".p18");
+      const p18_over = document.querySelectorAll(".overlay");
 
       const filtrarElementos = (filtro, btn1, btn2, btn3, tipo) => {
         let divs;
@@ -247,7 +247,6 @@ const esUrl = (cadena) => {
         filter.addEventListener("click", () => {
           p18_over.forEach((filter2) => {
             filter2.style.setProperty("display", "none", "important");
-            filter2.style.setProperty("background-color", "unset", "important");
           })
           
         });
