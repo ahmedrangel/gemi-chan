@@ -245,10 +245,10 @@ const esUrl = (cadena) => {
       genfilter.addEventListener("click", () => filtrarElementos(gen_arr, genfilter, varfilter, anifilter, "generacion"));
       varfilter.addEventListener("click", () => filtrarElementos(var_arr, varfilter, genfilter, anifilter, "variacion"));
       anifilter.addEventListener("click", () => filtrarElementos(ani_arr, anifilter, genfilter, varfilter, "anime"));
-
-      p18_filter.addEventListener("click", () => {
+      p18_filter.forEach((filter) => {
+      filter.addEventListener("click", () => {
         p18_over.style.display = "none";
       });
-    }
+    });
   }
 </script>
