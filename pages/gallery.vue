@@ -83,7 +83,9 @@ const esUrl = (cadena) => {
             <div class="type position-absolute d-flex justify-content-center align-items-center" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="${type}">
               <span class="iconify" data-icon="${icon}" data-inline="false"></span>
             </div>
-            <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
+            <div class="filter">
+              <img src="https://i.imgur.com/${data.imgurId}.png" class="card-image-top" alt="${title}" style="width: 100%;">
+            </div>
           </div>
           <div class="card-body card-desc text-white">
             ${esUrl(data.title) === false ? `<h5 class="card-title">${CapitalizeFirstLetter(title)}</h5>` : `<h5 class="card-title">Variación de: <a href="Variación de: ${data.title}" target="_blank">${data.title.replace(/^.*[\\\/]/, '')}</a></h5>`}
